@@ -130,7 +130,7 @@
 .mjx-test-inline .mjx-left-box {display: inline-block; width: 0; float: left}
 .mjx-test-inline .mjx-right-box {display: inline-block; width: 0; float: right}
 .mjx-test-display .mjx-right-box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
-.mjx-chtml .mjx-noError {line-height: 1.2; vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+.mjx-chtml .mjx-noError {line-height: 1.2; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
 .MJXc-TeX-unknown-R {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: normal}
 .MJXc-TeX-unknown-I {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: normal}
 .MJXc-TeX-unknown-B {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: bold}
@@ -159,30 +159,6 @@
 </style></head>
 
 <head>
-	<!-- <style>
-	  .arrow-icon {
-		width: 240px;
-		height: 240px;
-		margin: auto;
-	  }
-  
-	  .arrow-icon svg {
-		display: block;
-	  }	  		
-	</style> -->
-	<!-- <style>
-		.content-video-container {
-  			width: 500%;
-  			height: 1000px;
-		}
-	</style> -->
-	<!-- <style>
-		.content-video-container.large:nth-child(2),
-		.content-video-container.large:nth-child(3),
-		.content-video-container.large:nth-child(4) {
-		  margin-left: 10px; /* 调整间距的大小，可以根据需要进行调整 */
-		}
-	</style> -->
 	
 	
 </head>
@@ -194,23 +170,29 @@
 		<span style="font-weight: bolder; color:rgb(32, 156, 238)"><img src="figures/camera.png" alt="logo" style="width: 50px; height: 50px; margin-right: 7px; margin-bottom: -13px;">MoVie:</span>
 		 Visual Model-Based Policy Adaptation for View Generalization
 		</h1>
-	<table class="authors">
-		<tbody>
-			<tr>
-				<td>
-					<p style="color: #000000;font-size: 20px;text-align: center;">Anonymous</p>
-						
-					
-				</td>
-			</tr>
-		</tbody>
-	</table>
+		<table class="authors">
+            <tbody>
+                <tr>
+                    <td>
+                        <h4>
+                            <a href="" class="nobreak">Sizhe Yang<sup>12*</sup></a>,
+                            <a href="" class="nobreak">Yanjie Ze<sup>13*</sup></a>,
+                            <a href="http://hxu.rocks/" class="nobreak">Huazhe Xu<sup>14</sup></a>
+							<br><br>
+                            <span class="authors-affiliation"><sup>1</sup> Shanghai Qi Zhi Institute, <sup>2</sup> University of Electronic Science and Technology of China, <br>
+								<sup>3</sup> Shanghai Jiao Tong University, <sup>4</sup> Tsinghua University <br><br>
+								
+								<sup>*</sup> Equal contributions</span><br>
+                        </h4>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
 </div>
 
 <div class="content">
 	<div class="figure" style="height: 416px; background-image: url(figures/overview.png);"></div>
 	<div>
-		<!-- <h2>Feature Visualization</h2> -->
 		<br>
 		<br>
 
@@ -220,7 +202,7 @@
 			  align-items: center;
 			  margin-right: 0px;
 			  margin-top: 50;
-			  transform: translateX(-00px); /* 调整箭头向左偏移的距离 */
+			  transform: translateX(-00px); 
 			}
 		  
 			.arrow-icon0 svg {
@@ -229,7 +211,6 @@
 			  fill: currentColor;
 			}
 		</style>
-		<!-- <span style="color: #000000;font-size: 20px;font-weight: bold;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Training View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Moving View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Shaking View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel FOV</span> -->
 
 		<div class="content-video0" style="margin-bottom: 10px;margin-top: 10px; display: flex; flex-wrap: nowrap;">	
 			<div style="writing-mode: vertical-rl;margin: auto;"> 
@@ -285,72 +266,7 @@
   
 			  </div>
 
-			<!-- <div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
-				
-				<div class="content-video-frame0 larger" style="flex: 1;margin-right: 100px;">
-				  <div style="position: absolute; top: -30%; left: 0%; transform: translateX(-80%); text-align: center;">
-					  <p style="color: #000000;font-size: 20px;font-weight: bold;">Novel View</p>
-				  </div>
-				  <video playsinline="" autoplay="" loop="" preload="" muted="" width="130%">
-					<source src="videos/feature-fixed-s_rs.mp4" type="video/mp4">
-				  </video>
-				</div>
-			  </div> -->
-		  
-			<!-- <div class="content-video-container" style="display: flex; margin-right: 18px;position: relative;">
-				<div style="position: absolute; top: -40%; left: 50%; transform: translateX(-50%); text-align: center;">
-					<p style="color: #000000;font-size: 20px;font-weight: bold;">Moving View</p>
-				</div>
-			  <div class="content-video-frame large video-tdmpc" style="flex: 1;">
-				<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/feature-moving-f_rs.mp4" type="video/mp4">
-				</video>
-			  </div>
-			  <div class="content-video-frame large video-movie" style="flex: 1;">
-				<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/feature-moving-s_rs.mp4" type="video/mp4">
-				</video>
-			  </div>
-			</div>
-		  
-			<div class="content-video-container" style="display: flex; margin-right: 18px;position: relative;">
-				<div style="position: absolute; top: -40%; left: 50%; transform: translateX(-50%); text-align: center;">
-					<p style="color: #000000;font-size: 20px;font-weight: bold;">Shaking View</p>
-				</div>
-			  <div class="content-video-frame large video-tdmpc" style="flex: 1;">
-				<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/feature-shaking-f_rs.mp4" type="video/mp4">
-				</video>
-			  </div>
-			  <div class="content-video-frame large video-movie" style="flex: 1;">
-				<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/feature-shaking-s_rs.mp4" type="video/mp4">
-				</video>
-			  </div>
-			</div>
-		  
-			<div class="content-video-container" style="display: flex; margin-right: 18px;position: relative;">
-				<div style="position: absolute; top: -40%; left: 50%; transform: translateX(-50%); text-align: center;">
-					<p style="color: #000000;font-size: 20px;font-weight: bold;">Novel FOV</p>
-				</div>
-			  <div class="content-video-frame large video-tdmpc" style="flex: 1;">
-				<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/feature-fov-f_rs.mp4" type="video/mp4">
-				</video>
-			  </div>
-			  <div class="content-video-frame large video-movie" style="flex: 1;">
-			    <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/feature-fov-s_rs.mp4" type="video/mp4">
-			    </video>
-			  </div>
-		    </div> -->
-
 		</div>
-		<!-- <div style="text-align: center;margin-top: 0;">
-				<span style="color: rgb(255, 153, 0); text-align: center; font-size: 20px; font-weight: bold; display: inline;">&#x2022; TD-MPC</span>
-				<span style="color: rgb(32, 156, 238); text-align: center; font-size: 20px; font-weight: bold; display: inline; margin-right: 10px;">&#x2022; MoVie</span>
-		</div> -->
-		
 			
 		<br>
 	</div>
@@ -388,19 +304,12 @@
 	<div>
 		<h2>DM-Control</h2>
 
-		<!-- <div class="figure-caption">
-			<p>
-				<span class="bold">TD-MPC</span> solves challenging Dog tasks with <span class="highlight">38-dimensional continuous action spaces</span>. Soft Actor-Critic (SAC) fails to learn any meaningful behavior.
-			</p>
-		</div> -->
-
-
 		<style>
 			.arrow-icon {
 			  display: flex;
 			  align-items: center;
 			  margin-right: 10px;
-			  transform: translateX(-28px); /* 调整箭头向左偏移的距离 */
+			  transform: translateX(-28px);
 			}
 		  
 			.arrow-icon svg {
@@ -422,24 +331,29 @@
 		  	border-radius: 5px;
 		}
 	</style>
-<div style="text-align: right;margin-top: -50;">
+<div style="text-align: right;margin-top: -50;width: 67vw;">
 <ul style="display: inline-block;">
 	<li style="color: rgb(32, 156, 238); text-align: center; font-size: 20px; font-weight: bold; list-style-type: disc;">MoVie</li>
 	<li style="color: rgb(255, 153, 0); text-align: center; font-size: 20px; font-weight: bold; list-style-type: disc;">TD-MPC</li>
 	
-	<!-- <li style="color: rgb(255, 153, 0);text-align: left;"><span style="font-size: 15px;font-weight: bold; color:#000000">The <span style="font-weight: bolder; color:rgb(255, 153, 0)">orange box</span> indicates the policy visualization of <span style="font-weight: bolder; color:rgb(255, 153, 0)">TD-MPC</span>.</span></li>
-	<li style="color: rgb(32, 156, 238);text-align: left;"><span style="font-size: 15px;font-weight: bold; color:#000000">The <span style="font-weight: bolder; color:rgb(32, 156, 238)">blue box</span> indicates the policy visualization of <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>.</span></li> -->
 </ul>
 </div>
 
 
 <br>
 
+<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin-right: 25px; display: flex; flex-wrap: nowrap; justify-content: center;">
+	<div class="content-video-container" style="display: flex; position: relative;">
+	  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+		<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 60vw;margin-top: -20px;">
+		  <source src="videos/111.mp4" type="video/mp4">
+		</video>
+	  </div>
+	</div>
+  </div>
 
 
-<!-- <span style="color: #000000;font-size: 20px;font-weight: bold;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Training View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Moving View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Shaking View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel FOV</span> -->
-
-<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; display: flex; flex-wrap: nowrap;">
+ <!-- <div class="content-video" style="margin-bottom: 10px; margin-top: 25px; display: flex; flex-wrap: nowrap;">
 	<div style="writing-mode: vertical-rl;margin: auto;display: flex;align-items: center;margin-right: -70px;"> 
 		<p  style="transform: rotate(180deg);color: #000000;font-size: 20px;font-weight: bold;">Finger, spin</p>
 	</div>
@@ -759,9 +673,9 @@
 	  </div>
 	</div>
 	
-</div>
+</div> -->
 
-<div class="content-video hidden-row" style="margin-bottom: 10px; display: flex; flex-wrap: nowrap;">
+<!-- <div class="content-video hidden-row" style="margin-bottom: 10px; display: flex; flex-wrap: nowrap;">
 	<div style="writing-mode: vertical-rl;margin: auto;display: flex;align-items: center;margin-right: -70px;"> 
 		<p  style="transform: rotate(180deg);color: #000000;font-size: 20px;font-weight: bold;">Walker, stand</p>
 	</div>
@@ -1285,7 +1199,25 @@
 	  </div>
 	</div>
 	
-</div>
+</div> -->
+<div class="content-video hidden-row" style="margin-bottom: 0px; margin-top: 0px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+	<div class="content-video-container" style="display: flex; position: relative;">
+	  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+		<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 60vw;margin-top: -3px;">
+		  <source src="videos/22.mp4" type="video/mp4">
+		</video>
+	  </div>
+	</div>
+  </div>
+  <!-- <div class="content-video hidden-row" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+	<div class="content-video-container" style="display: flex; position: relative;">
+	  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+		<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 180%;">
+		  <source src="videos/3.mp4" type="video/mp4">
+		</video>
+	  </div>
+	</div>
+  </div> -->
 <div style="text-align: center; margin-top: 50px;">
 <button id="showMoreBtn" style="width: 150px; height: 40px; border-radius: 20px; background-color: #1e1c1c; color: #fff; font-size: 20px; border: none; cursor: pointer;">
 	Show More
@@ -1293,16 +1225,13 @@
 </div>
 
 <script>
-  // 获取按钮和所有隐藏视频容器的引用
   const showMoreBtn = document.getElementById('showMoreBtn');
   const hiddenRowContainers = document.querySelectorAll('.hidden-row');
 
-  // 设置初始状态为隐藏
   hiddenRowContainers.forEach(function(container) {
     container.style.display = 'none';
   });
 
-  // 点击按钮时切换显示/隐藏所有隐藏视频容器
   showMoreBtn.addEventListener('click', function() {
     hiddenRowContainers.forEach(function(container) {
       if (container.style.display === 'none') {
@@ -1331,22 +1260,17 @@
 	<div>
 		<h2>xArm</h2>
 
-		<div style="text-align: right;margin-top: -50;">
+		<div style="text-align: right;margin-top: -50;width: 67vw;">
 			<ul style="display: inline-block;">
 				<li style="color: rgb(32, 156, 238); text-align: center; font-size: 20px; font-weight: bold; list-style-type: disc;">MoVie</li>
 				<li style="color: rgb(255, 153, 0); text-align: center; font-size: 20px; font-weight: bold; list-style-type: disc;">TD-MPC</li>
-				
-				<!-- <li style="color: rgb(255, 153, 0);text-align: left;"><span style="font-size: 15px;font-weight: bold; color:#000000">The <span style="font-weight: bolder; color:rgb(255, 153, 0)">orange box</span> indicates the policy visualization of <span style="font-weight: bolder; color:rgb(255, 153, 0)">TD-MPC</span>.</span></li>
-				<li style="color: rgb(32, 156, 238);text-align: left;"><span style="font-size: 15px;font-weight: bold; color:#000000">The <span style="font-weight: bolder; color:rgb(32, 156, 238)">blue box</span> indicates the policy visualization of <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>.</span></li> -->
-			</ul>
+				</ul>
 			</div>
 			
 			
 			<br>
 
-		<!-- <span style="color: #000000;font-size: 20px;font-weight: bold;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Training View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Moving View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Shaking View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel FOV</span> -->
-
-<div class="content-video" style="margin-bottom: 10px;margin-top: 25px; display: flex; flex-wrap: nowrap;">
+<!-- <div class="content-video" style="margin-bottom: 10px;margin-top: 25px; display: flex; flex-wrap: nowrap;">
 	<div style="writing-mode: vertical-rl;margin: auto;display: flex;align-items: center;margin-right: -70px;"> 
 		<p  style="transform: rotate(180deg);color: #000000;font-size: 20px;font-weight: bold;">Reach</p>
 	</div>
@@ -1659,10 +1583,18 @@
 	  </div>
 	</div>
 	
-</div>
+</div> -->
 
-
-
+<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+	<div class="content-video-container" style="display: flex; position: relative;">
+	  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+		<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 60vw;">
+		  <source src="videos/44.mp4" type="video/mp4">
+		</video>
+	  </div>
+	</div>
+  </div>
+  
 
 
 
@@ -1671,22 +1603,26 @@
 	<div>
 		<h2>Adroit</h2>
 
-		<div style="text-align: right;margin-top: -50;">
+		<div style="text-align: right;margin-top: -50;width: 67vw;">
 			<ul style="display: inline-block;">
 				<li style="color: rgb(32, 156, 238); text-align: center; font-size: 20px; font-weight: bold; list-style-type: disc;">MoVie</li>
 				<li style="color: rgb(255, 153, 0); text-align: center; font-size: 20px; font-weight: bold; list-style-type: disc;">TD-MPC</li>
 							
-				<!-- <li style="color: rgb(255, 153, 0);text-align: left;"><span style="font-size: 15px;font-weight: bold; color:#000000">The <span style="font-weight: bolder; color:rgb(255, 153, 0)">orange box</span> indicates the policy visualization of <span style="font-weight: bolder; color:rgb(255, 153, 0)">TD-MPC</span>.</span></li>
-				<li style="color: rgb(32, 156, 238);text-align: left;"><span style="font-size: 15px;font-weight: bold; color:#000000">The <span style="font-weight: bolder; color:rgb(32, 156, 238)">blue box</span> indicates the policy visualization of <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>.</span></li> -->
 			</ul>
 			</div>
 			
 			
 		<br>
-
-		<!-- <span style="color: #000000;font-size: 20px;font-weight: bold;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Training View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Moving View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Shaking View &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Novel FOV</span> -->
-
-		<div class="content-video" style="margin-bottom: 10px;margin-top: 25px; display: flex; flex-wrap: nowrap;">	
+		<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+			<div class="content-video-container" style="display: flex; position: relative;">
+			  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+				<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 60vw;">
+				  <source src="videos/55.mp4" type="video/mp4">
+				</video>
+			  </div>
+			</div>
+		  </div>
+		<!-- <div class="content-video" style="margin-bottom: 10px;margin-top: 25px; display: flex; flex-wrap: nowrap;">	
 			<div style="writing-mode: vertical-rl;margin: auto;display: flex;align-items: center;margin-right: -70px;"> 
 				<p  style="transform: rotate(180deg);color: #000000;font-size: 20px;font-weight: bold;">Door</p>
 			</div>
@@ -1925,7 +1861,7 @@
 		    </div>
 			
 		</div>
-	</div>
+	</div> -->
 
 	<div class="hr"></div>
 
