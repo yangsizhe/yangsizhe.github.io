@@ -1,24 +1,208 @@
-<!DOCTYPE html>
 <html>
-<head>
-    <style>
-        .centered-text {
-            font-weight: bold;
-            font-size: 24px;
-            text-align: center;
-            width: 60%;
-            margin: 0 auto;
-        }
-    </style>
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Sizhe Yang</title>
+    <meta name="author" content="Sizhe Yang">
+    <meta name="viewport" content="width=device-width, initial-scale=0.35, maximum-scale=1.0">
+    <meta property="og:title" content="Sizhe Yang">
+    <!-- <meta property="og:image" content="https://yanjieze.com/images/selfie.JPG"> -->
+    <meta property="og:url" content="https://yangsizhe.github.io/">
+    <!-- <meta name="twitter:card" content="summary_large_image"> -->
+    <!-- <link rel="apple-touch-icon" href="https://yanjieze.com/images/me.JPG"> -->
+    <link rel="icon" type="image/png" href="files\images\icon_white_bg.jpg">
+    <!-- <link rel="manifest" href="https://yanjieze.com/miscs/site.webmanifest"> -->
+    <link rel="stylesheet" href="./files/style.css">
 </head>
+
 <body>
-    <div class="centered-text">
-        <br/><br/><br/><br/><br/><br/><br/>
-        Hi! I am an undergraduate student majoring in Software Engineering at University of Electronic Science and Technology of China. 
-        <br/>
-        My research interests lie in the fields of reinforcement learning and robotics.
-        <br/>
-        Currently I work with Prof. Yanchao Yang at the University of Hong Kong and Prof. Huazhe Xu at Tsinghua University.
+<div class="header noselect">
+    <div class="content row">
+        <div class="header-profile-picture"></div>
+        <div class="header-text">
+            <div class="header-name">
+                <h1>Sizhe Yang</h1>
+            </div>
+            <div class="header-subtitle">
+                Bachelor of Software Engineering, University of Electronic Science and Technology of China
+            </div>
+            <div class="header-links">
+                <a class="btn" href="mailto:3599699144yang@gmail.com">Gmail</a> /
+                <!-- <a class="btn" href="https://scholar.google.com/citations?user=BO_b2O8AAAAJ&amp;hl=zh-CN&amp;oi=ao">Google Scholar</a> / -->
+                <a class="btn" href="https://github.com/yangsizhe">GitHub</a> /
+                <a class="btn" href="https://twitter.com/SizheYang111">Twitter</a> 
+                <!-- <a class="btn" href="https://yanjieze.com/pdfs/YanjieZe_Academic_CV.pdf">CV</a> / -->
+                <!-- <a class="btn" href="https://www.zhihu.com/people/luo-hua-qiu-jin">知乎</a> -->
+            </div>
+        </div>
     </div>
+</div>
+<div class="content" style="padding-bottom: 64px;">
+    <div>
+        <p>I am an undergraduate student majoring in Software Engineering at <a href="https://www.uestc.edu.cn/">University of Electronic Science and Technology of China</a>.
+            Currently I work with <a href="https://yanchaoyang.github.io/">Prof. Yanchao Yang</a> at <a href="https://www.hku.hk/">the University of Hong Kong</a>, 
+            focusing on <span class="bold">Embodied AI</span>.</p>
+
+        <!-- <p>I receive my Bachelor degree in <span class="bold">Computer Science</span> at <a href="https://yanchaoyang.github.io/">Shanghai Jiao Tong University</a> as <span class="bold">Outstanding
+                Graduate</span> in June 2023. I am also the recipient of <a href="https://www.sensetime.com/en/technology-personnel">SenseTime Scholarship</a> in 2022, a
+            scholarship that selects 30 undergraduates from all over China.</p>
+
+        <p>I am currently doing research at <a href="https://sqz.ac.cn/">Shanghai Qi Zhi Institute</a>, focusing on intersection of <span class="bold">Robotics</span>, <span class="bold">Reinforcement Learning</span>, and <span class="bold">Computer Vision</span>. I work with <a href="https://xiaolonw.github.io/">Prof. Xiaolong Wang</a> at <a href="https://ucsd.edu/">University of California San Diego</a> and <a href="http://hxu.rocks/">Prof.
+                Huazhe Xu</a> at <a href="https://www.tsinghua.edu.cn/en/">Tsinghua University</a></p>. -->
+
+    </div>
+    <div>
+        <h2 class="noselect">Research Interest</h2>
+        <p>
+            <span class="bold">Reinforcement Learning</span>, <span class="bold">Computer Visioin</span> and <span class="bold">Robotics</span>
+        </p>
+    </div>
+    <style>
+        .button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            font: inherit;
+            text-decoration: underline;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .selected-button {
+            border: none;
+            background-color: transparent;
+            padding: 0;
+            font: inherit;
+            text-decoration: underline;
+            cursor: pointer;
+            outline: none;
+            color: #f09228;
+          }
+    </style>
+    <div>
+        <h2 class="noselect">Publications</h2>
+        <p>
+        <button class="button selected-button" id="button1" onclick="showSelectedPublications(); selectButton(&#39;button1&#39;)">Selected Papers</button> /
+        <button class="button" id="button2" onclick="showFullPublications(); selectButton(&#39;button2&#39;)">Full Papers by Year</button>. Representative papers are <span style="background-color: #e3f1f7;">highlighted</span>.
+    </p>
+    (* indicates equal contribution)<br><br>
+
+        <div id="selected_publications">
+            
+            <div class="highlight publication row clearfix">
+                <div class="row-media" style="background-image: url(files/images/MoVie.gif);"></div>
+                <div class="row-text">
+                    <a class="publication-title bold" href="https://arxiv.org/abs/2307.00972">MoVie: Visual Model-Based Policy Adaptation for View Generalization</a><br>
+                    <span class="bold">Sizhe Yang*</span>, Yanjie Ze*, Huazhe Xu<br>
+                    <span class="italic">Conference on Neural Information Processing Systems (<a href="https://nips.cc/Conferences/2023">NeurIPS</a>)</span>, 2023<br>
+                    <a class="btn btn-orange" href="https://yangsizhe.github.io/MoVie/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2307.00972">arXiv</a> / <a href="https://github.com/yangsizhe/MoVie/">code</a> / <a class="btn btn-dark" href="files/bibtex/yang2023movie.txt">bibtex</a>
+                </div>
+            </div>
+
+            <div class="publication row clearfix">
+                <div class="row-media" style="background-image: url(files/images/RL-ViGen.jpg);"></div>
+                <div class="row-text">
+                    <a class="publication-title bold" href="https://arxiv.org/abs/2307.10224">RL-ViGen: A Reinforcement Learning Benchmark for Visual Generalization</a><br>
+                    Zhecheng Yuan*, <span class="bold">Sizhe Yang*</span>, Pu Hua, Can Chang, Kaizhe Hu, Xiaolong Wang, Huazhe Xu<br>
+                    <span class="italic">Conference on Neural Information Processing Systems Datasets and Benchmarks Track (<a href="https://nips.cc/Conferences/2023">NeurIPS</a>)</span>, 2023<br>
+                    <a class="btn btn-orange" href="https://gemcollector.github.io/RL-ViGen/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2307.10224">arXiv</a> / <a href="https://github.com/gemcollector/RL-ViGen">code</a> / <a class="btn btn-dark" href="https://yanjieze.com/bibtex/yuan2023rl.txt">bibtex</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="full_publications" style="display: none;">
+            
+            <div class="highlight publication row clearfix">
+                <div class="row-media" style="background-image: url(files/images/MoVie.gif);"></div>
+                <div class="row-text">
+                    <a class="publication-title bold" href="https://arxiv.org/abs/2307.00972">MoVie: Visual Model-Based Policy Adaptation for View Generalization</a><br>
+                    <span class="bold">Sizhe Yang*</span>, Yanjie Ze*, Huazhe Xu<br>
+                    <span class="italic">Conference on Neural Information Processing Systems (<a href="https://nips.cc/Conferences/2023">NeurIPS</a>)</span>, 2023<br>
+                    <a class="btn btn-orange" href="https://yangsizhe.github.io/MoVie/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2307.00972">arXiv</a> / <a href="https://github.com/yangsizhe/MoVie/">code</a> / <a class="btn btn-dark" href="files/bibtex/yang2023movie.txt">bibtex</a>
+                </div>
+            </div>
+            
+            <div class="publication row clearfix">
+                <div class="row-media" style="background-image: url(files/images/RL-ViGen.jpg);"></div>
+                <div class="row-text">
+                    <a class="publication-title bold" href="https://arxiv.org/abs/2307.10224">RL-ViGen: A Reinforcement Learning Benchmark for Visual Generalization</a><br>
+                    Zhecheng Yuan*, <span class="bold">Sizhe Yang*</span>, Pu Hua, Can Chang, Kaizhe Hu, Xiaolong Wang, Huazhe Xu<br>
+                    <span class="italic">Conference on Neural Information Processing Systems Datasets and Benchmarks Track (<a href="https://nips.cc/Conferences/2023">NeurIPS</a>)</span>, 2023<br>
+                    <a class="btn btn-orange" href="https://gemcollector.github.io/RL-ViGen/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2307.10224">arXiv</a> / <a href="https://github.com/gemcollector/RL-ViGen">code</a> / <a class="btn btn-dark" href="https://yanjieze.com/bibtex/yuan2023rl.txt">bibtex</a>
+                </div>
+            </div>
+
+
+        </div>
+
+        <script>
+            function showFullPublications() {
+                var selectedPublicationsDiv = document.getElementById('selected_publications');
+                selectedPublicationsDiv.style.display = 'none';
+
+                var fullPublicationsDiv = document.getElementById('full_publications');
+                fullPublicationsDiv.style.display = 'block';
+            }
+
+            function showSelectedPublications() {
+                var fullPublicationsDiv = document.getElementById('full_publications');
+                fullPublicationsDiv.style.display = 'none';
+
+                var selectedPublicationsDiv = document.getElementById('selected_publications');
+                selectedPublicationsDiv.style.display = 'block';
+            }
+
+            function selectButton(buttonId) {
+                var button1 = document.getElementById('button1');
+                var button2 = document.getElementById('button2');
+            
+                if (buttonId === 'button1') {
+                  button1.classList.add('selected-button');
+                  button2.classList.remove('selected-button');
+                } else if (buttonId === 'button2') {
+                  button1.classList.remove('selected-button');
+                  button2.classList.add('selected-button');
+                }
+              }
+        </script>
+
+
+
+    </div>
+
+
+    <!-- <div>
+        <h2 class="noselect">Academic Performance</h2>
+        GPA: <span class="italic">91/100, 4.0/4.3</span>
+        <br>
+        <b><span class="bold"> Rank 1/120 for the 6th semester</span></b>
+        <details>
+            <summary>Related A+ courses</summary>
+            CS420: Machine Learning. (A+)
+            <br>
+            CS245: Data Science. (A+)
+            <br>
+            CS337: Computer Graphics. (A+)
+            <br>
+            CS386: Digital Image Processing. (A+)
+            <br>
+            CS499: Mathematical Foundations of Computer Science. (A+)
+            <br>
+            CS214: Algorithm and Complexity. (A+)
+            <br>
+            MA119: Probability and Statistics. (A+)
+            <br>
+            ...
+        </details>
+    </div> -->
+
+</div>
+
+
+<div class="footer noselect">
+    <div class="footer-content">
+        © 2023 Sizhe Yang. Template from <a style="color: rgb(0, 0, 0); text-decoration: underline;" href="https://yanjieze.com/">Yanjie Ze</a>.
+    </div>
+</div>
+
 </body>
 </html>

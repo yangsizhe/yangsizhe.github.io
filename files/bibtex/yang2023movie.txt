@@ -1,0 +1,6 @@
+@article{yang2023movie,
+    title={MoVie: Visual Model-Based Policy Adaptation for View Generalization},
+    author={Sizhe Yang and Yanjie Ze and Huazhe Xu},
+    journal={NeurIPS}, 
+    year={2023},
+}
