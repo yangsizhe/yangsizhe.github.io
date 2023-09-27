@@ -28,6 +28,7 @@ sub, sup {line-height: 0;}
 .content-video-frame.medium {width: 30%;}
 .content-video-frame.large {width: 36%;}
 .content-video-frame.big {width: 66%;}
+.content-video-frame.big1 {width: 50%;}
 .content-video-frame.larger {width: 60%;}
 .content-video-frame.huge {width: 76%;}
 .content-video-frame span {display: inline-block; margin-bottom: 12px; font-weight: bold; font-size: 1.2em;}

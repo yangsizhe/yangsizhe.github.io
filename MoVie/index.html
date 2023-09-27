@@ -218,98 +218,17 @@
 </div>
 
 <div class="content">
-	<div class="figure" style="height: 416px; background-image: url(figures/overview.png);"></div>
-	<div>
-		<br>
-		<br>
 
-		<style>
-			.arrow-icon0 {
-			  display: flex;
-			  align-items: center;
-			  margin-right: 0px;
-			  margin-top: 50;
-			  transform: translateX(-00px); 
-			}
-		  
-			.arrow-icon0 svg {
-			  width: 200px;
-			  height: 200px;
-			  fill: currentColor;
-			}
-		</style>
-
-		<div class="content-video0" style="margin-bottom: 10px;margin-top: 10px; display: flex; flex-wrap: nowrap;">	
-			<div style="writing-mode: vertical-rl;margin: auto;"> 
-				<p  style="transform: rotate(180deg);color: #000000;font-size: 20px;font-weight: bold;">Feature Map</p>
-			</div>
-
-			<div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
-				
-				<div class="content-video-frame0 larger" style="flex: 1;margin-left: 18px;">
-				  <div style="position: absolute; top: -23%; left: 53%; transform: translateX(-50%); text-align: center;">
-					  <p style="color: #000000;font-size: 20px;font-weight: bold;">Training View</p>
-				  </div>
-				  <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-					<source src="videos/fixed_view_dfct0.0_wo_jet.mp4" type="video/mp4">
-					<!-- <source src="videos/training_setting.mp4" type="video/mp4"> -->
-				  </video>
-				</div>
-  
-			  </div>
-
-			<div class="arrow-icon0" style="top: 50%;margin-top: 28px" >
-				<div style="position: absolute; top: 20%; left: 40%; transform: translateX(-50%); text-align: center;">
-					<p style="color: #000000;font-size: 20px;font-weight: bold;">Novel View</p>
-				</div>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
-				  <line x1="0" y1="55" x2="120" y2="55"></line>
-				  <polyline points="100 50 120 55 100 60"></polyline>
-				</svg>
-			</div>
-			
-		  
-			<div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
-				
-			  <div class="content-video-frame0 larger" style="flex: 1;margin-left: 18px;">
-				<div style="position: absolute; top: -23%; left: 50%; transform: translateX(-50%); text-align: center;">
-					<p style="color: rgb(255, 153, 0);font-size: 20px;font-weight: bold;">TD-MPC</p>
-				</div>
-				<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-				  <source src="videos/fixed_view_wo_jet.mp4" type="video/mp4">
-				  <!-- <source src="videos/novel_view_without_adaptation.mp4" type="video/mp4"> -->
-				</video>
-			  </div>
-
-			</div>
-			<div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
-				
-				<div class="content-video-frame0 larger" style="flex: 1;margin-left: 18px;">
-				  <div style="position: absolute; top: -23%; left: 50%; transform: translateX(-50%); text-align: center;">
-					  <p style="color: rgb(32, 156, 238);font-size: 20px;font-weight: bold;">MoVie (ours)</p>
-				  </div>
-				  <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
-					<source src="videos/fixed_view_w_jet3.mp4" type="video/mp4">
-					<!-- <source src="videos/novel_view_with_adaptation.mp4" type="video/mp4"> -->
-				  </video>
-				</div>
-  
-			  </div>
-
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin-right: 25px; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame" style="flex: 1; display: flex; justify-content: center; align-items: center;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1200px; margin-top: -20px;">  
+			  <source src="videos/teaser_video.mp4" type="video/mp4">
+			</video>
+		  </div>
 		</div>
-			
-		<br>
 	</div>
 
-	<div style="text-align: center;"> 
-
-		<p class="teaser" style="font-size: 1.2em;">
-			We present <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>, a framework that adapts visual model-based policy for view generalization.
-			We visualize the first layer feature map of the image encoder from TD-MPC and <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span> above. 
-			It is observed that the feature map from <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span> on the novel view 
-			exhibits a closer resemblance to that on the training view.
-		</p>
-	</div>
 	<div class="hr"></div>
 	<div>
 		<h2>Abstract</h2>
@@ -328,6 +247,117 @@
 	</div>
 	<div class="figure" style="height: 180px; background-image: url(figures/bar_chart.png);"></div>
 	
+
+
+	<div class="hr"></div>
+	<div>
+		<h2>Method</h2>
+		<div style="text-align: center;"> 
+			<p class="teaser" style="font-size: 1.2em;">
+				We present <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>, a framework that adapts visual model-based policy for view generalization.
+				During training (left), the agent is trained with the latent dynamics loss. At test time (right), we freeze the dynamics model and modify the encoder as a spatial adaptive encoder to adapt the agents to novel views.
+				We visualize the first layer feature map of the image encoder from TD-MPC and <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>. 
+				It is observed that the feature map from <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span> on the novel view exhibits a closer resemblance to that on the training view.
+			</p>
+		</div>
+
+		<div class="figure" style="height: 416px; background-image: url(figures/overview.png);"></div>
+
+		<div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
+	
+			<style>
+				.arrow-icon0 {
+				  display: flex;
+				  align-items: center;
+				  margin-right: 0px;
+				  margin-top: 50;
+				  transform: translateX(-00px); 
+				}
+			  
+				.arrow-icon0 svg {
+				  width: 200px;
+				  height: 200px;
+				  fill: currentColor;
+				}
+			</style>
+	
+			<div class="content-video0" style="display: flex; flex-wrap: nowrap;">	
+				<div style="writing-mode: vertical-rl;margin: auto;"> 
+					<p  style="transform: rotate(180deg);color: #000000;font-size: 20px;font-weight: bold;">Feature Map</p>
+				</div>
+	
+				<div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
+					
+					<div class="content-video-frame0 larger" style="flex: 1;margin-left: 18px;">
+					  <div style="position: absolute; top: -23%; left: 53%; transform: translateX(-50%); text-align: center;">
+						  <p style="color: #000000;font-size: 20px;font-weight: bold;">Training View</p>
+					  </div>
+					  <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="videos/fixed_view_dfct0.0_wo_jet.mp4" type="video/mp4">
+						<!-- <source src="videos/training_setting.mp4" type="video/mp4"> -->
+					  </video>
+					</div>
+	  
+				  </div>
+	
+				<div class="arrow-icon0" style="top: 50%;margin-top: 28px" >
+					<div style="position: absolute; top: 20%; left: 40%; transform: translateX(-50%); text-align: center;">
+						<p style="color: #000000;font-size: 20px;font-weight: bold;">Novel View</p>
+					</div>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-arrow-right">
+					  <line x1="0" y1="55" x2="120" y2="55"></line>
+					  <polyline points="100 50 120 55 100 60"></polyline>
+					</svg>
+				</div>
+				
+			  
+				<div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
+					
+				  <div class="content-video-frame0 larger" style="flex: 1;margin-left: 18px;">
+					<div style="position: absolute; top: -23%; left: 50%; transform: translateX(-50%); text-align: center;">
+						<p style="color: rgb(255, 153, 0);font-size: 20px;font-weight: bold;">TD-MPC</p>
+					</div>
+					<video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+					  <source src="videos/fixed_view_wo_jet.mp4" type="video/mp4">
+					  <!-- <source src="videos/novel_view_without_adaptation.mp4" type="video/mp4"> -->
+					</video>
+				  </div>
+	
+				</div>
+				<div class="content-video-container0" style="display: flex; margin-right: 18px;position: relative;">
+					
+					<div class="content-video-frame0 larger" style="flex: 1;margin-left: 18px;">
+					  <div style="position: absolute; top: -23%; left: 50%; transform: translateX(-50%); text-align: center;">
+						  <p style="color: rgb(32, 156, 238);font-size: 20px;font-weight: bold;">MoVie (ours)</p>
+					  </div>
+					  <video playsinline="" autoplay="" loop="" preload="" muted="" width="100%">
+						<source src="videos/fixed_view_w_jet3.mp4" type="video/mp4">
+						<!-- <source src="videos/novel_view_with_adaptation.mp4" type="video/mp4"> -->
+					  </video>
+					</div>
+	  
+				  </div>
+	
+			</div>
+				
+			<br>
+		</div>
+	
+		<!-- <div style="text-align: center;"> 
+	
+			<p class="teaser" style="font-size: 1.2em;">
+				We present <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span>, a framework that adapts visual model-based policy for view generalization.
+				We visualize the first layer feature map of the image encoder from TD-MPC and <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span> above. 
+				It is observed that the feature map from <span style="font-weight: bolder; color:rgb(32, 156, 238)">MoVie</span> on the novel view 
+				exhibits a closer resemblance to that on the training view.
+			</p>
+		</div> -->
+	</div>
 
 
 	<div class="hr"></div>
@@ -380,7 +410,7 @@
 		</video>
 	  </div>
 	</div>
-  </div>
+</div>
 
 
  <!-- <div class="content-video" style="margin-bottom: 10px; margin-top: 25px; display: flex; flex-wrap: nowrap;">
