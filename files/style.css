@@ -78,7 +78,7 @@ div {
 }
 
 .content {
-    max-width: 52vw;
+    max-width: 880px;  /** 52vw **/
     padding-left: 16px;
     padding-right: 16px;
     margin: auto;
