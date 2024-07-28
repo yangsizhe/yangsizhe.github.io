@@ -1,0 +1,451 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>BBSEA</title>
+	<meta property="og:title" content="BBSEA">
+	<meta property="og:description" content="Visual Model-Based Policy Adaptation for View Generalization">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=0.2">
+	<link rel="stylesheet" href=".\static\css\style.css">
+	<link rel="icon" href="figures/brain-body.png">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+	<link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+	<script defer src="./static/js/fontawesome.all.min.js"></script>
+
+	</script>
+	<script type="text/javascript">
+		function toggle(id) {
+			var e = document.getElementById(id);
+			if(e.style.display == 'block')
+				e.style.display = 'none';
+			else
+				e.style.display = 'block';
+		}
+	</script>
+<style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style>
+
+<style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+</style><style type="text/css">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-chartest {display: block; visibility: hidden; position: absolute; top: 0; line-height: normal; font-size: 500%}
+.mjx-chartest .mjx-char {display: inline}
+.mjx-chartest .mjx-box {padding-top: 1000px}
+.MJXc-processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MJXc-processed {display: none}
+.mjx-test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.mjx-test.mjx-test-display {display: table!important}
+.mjx-test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.mjx-test.mjx-test-default {display: block!important; clear: both}
+.mjx-ex-box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.mjx-test-inline .mjx-left-box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .mjx-right-box {display: inline-block; width: 0; float: right}
+.mjx-test-display .mjx-right-box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.mjx-chtml .mjx-noError {line-height: 1.2; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+.MJXc-TeX-unknown-R {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+.MJXc-TeX-vec-R {font-family: MJXc-TeX-vec-R,MJXc-TeX-vec-Rw}
+.MJXc-TeX-vec-B {font-family: MJXc-TeX-vec-B,MJXc-TeX-vec-Bx,MJXc-TeX-vec-Bw}
+</style></head>
+
+<head>
+
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1107.0" data-gr-ext-installed=""><div style="display: none;"></div><div class="header" id="top">
+	
+	<br><br>
+	<h1>
+		<span style="font-weight: bolder; color:rgb(32, 156, 238)"><img src="figures/brain-body.png" alt="logo" style="width: 70px; height: 100px; margin-right: 7px; margin-bottom: -30px;">BBSEA</span>: Brain-Body Synchronization for Embodied Agents
+	</h1>
+
+	<!-- <h3 style="color:rgb(0, 0, 0)">
+		Anonymous Authors
+	</h3> -->
+	<table class="authors">
+        <tbody>
+            <tr>
+                <td>
+                    <h4>
+                        <a href="https://yangsizhe.github.io/" class="nobreak">Sizhe Yang<sup>1*</sup></a>, &nbsp;
+                        <a href="https://qianqianlo.github.io/" class="nobreak">Qian Luo<sup>2*</sup></a>, &nbsp;
+						<a href="" class="nobreak">Anupam Pani<sup>2</sup></a>, &nbsp;
+                        <a href="https://yanchaoyang.github.io/" class="nobreak">Yanchao Yang<sup>2</sup></a>
+						<br><br>
+                        <span class="authors-affiliation"><sup>1</sup>University of Electronic Science and Technology of China, &nbsp;<sup>2</sup>The University of Hong Kong, &nbsp;<br>
+							<sup>*</sup>Equal contribution <br>
+						</span><br>
+							<!-- <span class="authors-affiliation"><sup>*</sup>Equal contribution <br></span> -->
+                    </h4>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+	<div class="links" style="margin-top:-1.3%;">
+		<a href="https://yangsizhe.github.io/bbes/static/bbsea.pdf" class="btn"><i class="fas fa-file-pdf"></i>&nbsp;&nbsp;Paper</a> &nbsp;
+		<a href="https://github.com/yangsizhe/bbsea" class="btn"><i class="fab fa-github"></i>&nbsp;&nbsp;Code</a> 
+	</div>
+</div>
+
+<div class="content">
+
+	<div class="figure" style="height: 400px; background-image: url(figures/teaser.png);"></div>
+
+	<div class="hr"></div>
+	<div>
+		<h2>Abstract</h2>
+		<p class="abstract" style="font-size: 1.2em;">
+			Embodied agents capable of complex physical skills can improve productivity, elevate life quality, and reshape human-machine collaboration. We aim at <span style="font-weight: bolder; color:rgb(32, 156, 238)">autonomous training of embodied agents</span> for various tasks <span style="font-weight: bolder; color:rgb(32, 156, 238)">involving mainly large foundation models</span>. It is believed that these models could act as a brain for embodied agents; however, existing methods heavily rely on humans for task proposal and scene customization, limiting the learning autonomy, training efficiency, and generalization of the learned policies. In contrast, we introduce a brain-body synchronization scheme to promote embodied learning in unknown environments without human involvement. The proposed combines the wisdom of foundation models ("brain") with the physical capabilities of embodied agents ("body"). Specifically, it leverages the "brain" to propose learnable physical tasks and success metrics, enabling the "body" to automatically acquire various skills by continuously interacting with the scene. We demonstrate that the proposed synchronization can generate diverse tasks and develop multi-task policies with solid adaptability to new tasks and environments. We will release our data, code, and trained models to facilitate future study in building autonomously learning agents.
+		</p>
+	</div>
+	
+
+	<div class="hr"></div>
+	<div>
+		<h2>Method</h2>
+		<div style="text-align: center;"> 
+			<p class="teaser" style="font-size: 1.2em;">
+				We propose a framework in which the entire process of diverse skill acquisition is performed <span style="font-weight: bolder; color:rgb(32, 156, 238)">in an automatic way</span> without human intervention.
+				<br>
+				The framework consists of two essential components: the <span style="font-weight: bolder; color:rgb(32, 156, 238)">brain</span> -- large foundation models and perception module, and the <span style="font-weight: bolder; color:rgb(32, 156, 238)">body</span> -- robot arms, which take textual instructions and interact with the environment. An LLM utilizes a scene graph to facilitate its understanding of the environment and proposes tasks for the robot to learn by guiding the exploration and determining whether the task is accomplished. Our pipeline includes three parts: 1) <span style="font-weight: bolder; color:rgb(32, 156, 238)">scene-compatible task proposal</span>; 2) <span style="font-weight: bolder; color:rgb(32, 156, 238)">task completion inference</span>; and 3) <span style="font-weight: bolder; color:rgb(32, 156, 238)">task-conditioned policy learning</span>. An overview of the proposed framework is shown in Figure 2. 
+			
+			</p>
+		</div>
+
+		<div class="figure" style="height: 500px; background-image: url(figures/overview.png);"></div>
+	</div>
+
+<br>
+<div class="hr"></div>
+</div>
+
+
+  
+
+<div>
+	<h2>Trajectories Collected on 60 Tasks</h2>
+
+	<br>
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/1.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/1.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/2.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/3.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/4.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/5.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/6.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/7.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/8.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/9.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/10.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/11.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/12.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/13.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+	
+	<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+		<div class="content-video-container" style="display: flex; position: relative;">
+		  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+			<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+			  <source src="videos/14.mp4" type="video/mp4">
+			</video>
+		  </div>
+		</div>
+	</div>
+
+<div class="hr"></div>
+
+</div>
+
+
+
+<div>
+		<h2>Zero-Shot Generalization</h2>
+
+		<br>
+		<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+			<div class="content-video-container" style="display: flex; position: relative;">
+			  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+				<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+				  <source src="videos/zero-shot.mp4" type="video/mp4">
+				</video>
+			  </div>
+			</div>
+		</div>
+
+	<div class="hr"></div>
+
+</div>
+
+<div>
+		<h2>Few-Shot Generalization</h2>
+
+		<br>
+		<div class="content-video" style="margin-bottom: 10px; margin-top: 25px; margin: auto; display: flex; flex-wrap: nowrap; justify-content: center;">
+			<div class="content-video-container" style="display: flex; position: relative;">
+			  <div class="content-video-frame big" style="flex: 1; display: flex; justify-content: center; align-items: center;margin-bottom: 10px;">
+				<video playsinline="" autoplay="" loop="" preload="" muted="" style="width: 1500px;">
+				  <source src="videos/few-shot.mp4" type="video/mp4">
+				</video>
+			  </div>
+			</div>
+		</div>
+
+	<div class="hr"></div>
+
+</div>
+
+</body><grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open"><style>
+  div.grammarly-desktop-integration {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select:none;
+    user-select:none;
+  }
+
+  div.grammarly-desktop-integration:before {
+    content: attr(data-content);
+  }
+</style><div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration" data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}"></div></template></grammarly-desktop-integration></html>
