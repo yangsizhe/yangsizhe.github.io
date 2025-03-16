@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="SplatForge">
+  <meta name="keywords" content="Robot Learning, Manipulation, 3DGS">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    SplatForge
+  </title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QZ38WT2YPD');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+
+  <div class="hero-video" style="height: 80%; width: 100vh; min-width: 100%; min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/aug_demo_with_caption_large_black.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <!-- class="navbar-item  pl-4 pr-4" -->
+            <!-- class="button is-inverted is-large" -->
+            <a class="button is-inverted is-large" href="./static/splatforge.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a>
+            <a class="button is-inverted is-large" href="https://yangsizhe.github.io/splatforge">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv (coming soon)</span>
+            </a>
+            <a class="button is-inverted is-large" href="https://yangsizhe.github.io/splatforge" >
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/github.svg" alt="ArXiv" />
+              </span>
+              <span>Code (coming soon)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 12rem;">
+        SplatForge
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem;">
+        Novel Demonstration Generation <br class="is-hidden-mobile"> with Gaussian Splatting <br class="is-hidden-mobile"> Enables Robust One-Shot Manipulation
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+        In Submission
+      </h1>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-5">
+      <ul>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#augmentation">Augmented Demonstrations</a></li>
+        <li><a href="#generalization">Real World Deployment</a></li>
+      </ul>
+    </nav>
+  </div>
+
+</section>
+
+
+
+
+<section class="section is-medium" id="overview">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-justified is-hidden-mobile">
+        <h2 class="subtitle ">
+          <strong style="color: rgb(0, 100, 200); font-size: 1.5em;">SplatForge</strong> is framework for novel demonstration generation that leverages 3D Gaussian Splatting (3DGS).
+          <br><br>
+          Stemming from <strong style="color: rgb(0, 100, 200); font-size: 1.05em;">a single expert demonstration</strong>, diversified data are generated across various visual domains, including different object poses, object types, camera views, scene appearance, lighting conditions, and robot embodiments. 
+          <br><br>
+          The generated demonstrations <strong style="color: rgb(0, 100, 200); font-size: 1.05em;">significantly enhance the generalization</strong> of visuomotor policies when confronting multiple disturbances          
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="method">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile">Method</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            We start from a single manually collected demonstration and multi-view images that capture the whole scene. The former provides task-related keyframes, while the latter helps scene reconstruction. After aligning the reconstructed frame with the real-world frame and segmenting different scene components, we carry out autonomous editing of the scene in pursuit of six different types of generalization.
+          </p>
+        </div>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/method.mp4" type="video/mp4">
+        </video>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="augmentation">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile">Augmented Demonstrations</h2>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/augmented_demo.mp4" type="video/mp4">
+        </video>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-small" id="generalization">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile">Real World Deployment</h2>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/lighting.mp4" type="video/mp4">
+        </video>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/appearance.mp4" type="video/mp4">
+        </video>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/camera_view.mp4" type="video/mp4">
+        </video>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/object_type.mp4" type="video/mp4">
+        </video>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/object_pose.mp4" type="video/mp4">
+        </video>
+
+        <video autoplay muted loop playsinline height="100%">
+          <source src="./static/videos/embodiment.mp4" type="video/mp4">
+        </video>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-small">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://yangsizhe.github.io/">Sizhe Yang</a><sup>*,1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://virlus.github.io/">Wenye Yu</a><sup>*,1,3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://increase24.github.io/">Jia Zeng</a><sup>1</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://lyuj1998.github.io/">Jun Lv</a><sup>3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://github.com/tongji-rkr/">Kerui Ren</a><sup>1,3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://www.mvig.org/">Cewu Lu</a><sup>3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="http://dahua.site/">Dahua Lin</a><sup>1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          <a href="https://oceanpang.github.io/">Jiangmiao Pang</a><sup>1</sup>
+        </div>
+      </div>
+
+      <div class="publication-authors">
+        <span class="author-block"><sup>1</sup>Shanghai AI Laboratory, </span>
+        <span class="author-block"><sup>2</sup>The Chinese University of Hong Kong, </span>
+        <span class="author-block"><sup>3</sup>Shanghai Jiao Tong University, </span>
+        <br>
+        <span class="author-block">*Equal contribution</span>
+      </div>
+
+
+    </div>
+    <br>
+
+    <!-- <pre class="is-hidden-mobile"><code> TODO </code></pre> -->
+
+    <p>
+      If you have any questions, please contact <a href="https://yangsizhe.github.io/">Sizhe Yang</a> and <a
+        href="https://virlus.github.io/">Wenye Yu</a>.
+    </p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template modified from <a href="https://nerfies.github.io/">NeRFies</a> and <a href="https://github.com/umi-on-legs/umi-on-legs.github.io/">UMI on Legs</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
