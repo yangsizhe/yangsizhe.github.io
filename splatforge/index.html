@@ -28,6 +28,35 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
+  <!-- 添加额外的样式，确保行间距在GitHub Pages上正确显示 -->
+  <style>
+    /* 确保行间距样式被优先应用 */
+    .subtitle.is-1.publication-title {
+      line-height: 1.2 !important;
+      max-height: none !important;
+    }
+    
+    h1.subtitle.is-1.publication-title {
+      line-height: 1.2 !important;
+      max-height: none !important;
+    }
+    
+    p, .subtitle, .content {
+      line-height: 1.4 !important;
+    }
+    
+    .subtitle strong {
+      line-height: 1.7 !important;
+    }
+    
+    /* 防止GitHub Pages上的样式覆盖 */
+    @media screen and (min-width: 769px) {
+      .subtitle.is-1.publication-title {
+        line-height: 1.2 !important;
+      }
+    }
+  </style>
+
   <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -83,10 +112,10 @@
       <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 12rem; line-height: 1.1;">
         <em>SplatForge</em>
       </h1>
-      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem; line-height: 1.2;">
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem; line-height: 1.2 !important; max-height: none !important;">
         Novel Demonstration Generation <br class="is-hidden-mobile"> with Gaussian Splatting <br class="is-hidden-mobile"> Enables Robust One-Shot Manipulation
       </h1>
-      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%; line-height: 1.3 !important;">
         In Submission
       </h1>
     </div>
