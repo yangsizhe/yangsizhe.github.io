@@ -78,7 +78,7 @@ div {
 }
 
 .content {
-    max-width: 880px;  /** 52vw **/
+    max-width: 1200px;  /** 原来是880px **/
     padding-left: 16px;
     padding-right: 16px;
     margin: auto;
@@ -150,7 +150,7 @@ p {
     float: left;
     margin-left: 12px;
     line-height: 1.5em;
-    max-width: 45vw;
+    max-width: 75%;
 }
 
 .row-text span {
@@ -235,6 +235,10 @@ p {
 
     body {
         font-size: 18px;
+    }
+
+    .content {
+        max-width: 90%;  /** 添加响应式宽度 **/
     }
 
     a.btn {
