@@ -199,29 +199,21 @@ transition: opacity 1.0s;
 }
 
 .video-container {
-  margin-bottom: 2rem !important;
-  padding: 15px;
+  margin-bottom: 1.5rem;
+  padding: 10px;
   border-radius: 8px;
   transition: transform 0.3s ease;
-  background-color: rgba(245, 245, 245, 0.5);
-}
-
-.video-container:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .video-container video {
   border-radius: 6px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 100%;
 }
 
 .video-container p {
-  margin-top: 15px !important;
+  margin-top: 10px;
   color: rgb(0, 100, 200);
   font-size: 1.1rem;
-  font-weight: 600;
 }
 
 .container.is-max-widescreen {
@@ -232,11 +224,11 @@ transition: opacity 1.0s;
 
 /* 增加行间距 */
 p, .subtitle, .content {
-  line-height: 1.8 !important;
+  line-height: 1.4 !important;
 }
 
 .subtitle strong {
-  line-height: 1.9 !important;
+  line-height: 1.7 !important;
 }
 
 /* 增加段落间距 */
@@ -262,4 +254,21 @@ p {
   .container.is-max-widescreen {
     width: 95% !important;
   }
+}
+
+/* 展开按钮样式 */
+#show-more-demos {
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  padding: 0.5rem 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#show-more-demos:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+#additional-demos {
+  transition: all 0.5s ease;
 }

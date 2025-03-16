@@ -80,10 +80,10 @@
   <!-- Hero content: will be in the middle -->
   <div class="hero-body">
     <div class="container has-text-centered">
-      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 12rem;">
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 12rem; line-height: 1.1;">
         <em>SplatForge</em>
       </h1>
-      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem;">
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem; line-height: 1.2;">
         Novel Demonstration Generation <br class="is-hidden-mobile"> with Gaussian Splatting <br class="is-hidden-mobile"> Enables Robust One-Shot Manipulation
       </h1>
       <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2rem; opacity: 80%;">
@@ -113,7 +113,7 @@
   <div class="container is-max-widescreen">
     <div class="columns is-centered">
       <div class="column is-four-fifths has-text-justified is-hidden-mobile">
-        <h2 class="subtitle ">
+        <h2 class="subtitle " style="line-height: 1.5;">
           <strong style="color: rgb(0, 100, 200); font-size: 1.5em;">SplatForge</strong> is framework that leverages 3D Gaussian Splatting (3DGS) to generate novel demonstrations for RGB-based policy learning.
           <br><br>
           Stemming from <strong style="color: rgb(0, 100, 200); font-size: 1.05em;">a single expert demonstration</strong>, diversified data are generated across various visual domains, including different object poses, object types, camera views, scene appearance, lighting conditions, and robot embodiments. 
@@ -133,7 +133,7 @@
         <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(0, 100, 200);">Method</h2>
 
         <div class="content has-text-justified">
-          <p style="font-size: 1.1rem;">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
             We start from a single manually collected demonstration and multi-view images that capture the whole scene. The former provides task-related keyframes, while the latter helps scene reconstruction. After aligning the reconstructed frame with the real-world frame and segmenting different scene components, we carry out autonomous editing of the scene in pursuit of six different types of generalization.
           </p>
         </div>
@@ -253,43 +253,16 @@
         
         <br>
 
-        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(0, 130, 220);">More Demos</h3>
-
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <div class="video-container has-text-centered">
-              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
-                <source src="./static/videos/camera_view.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          
-          <div class="column is-half">
-            <div class="video-container has-text-centered">
-              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
-                <source src="./static/videos/object_type.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          
-          <div class="column is-half">
-            <div class="video-container has-text-centered">
-              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
-                <source src="./static/videos/object_pose.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
-          
-          <div class="column is-half">
-            <div class="video-container has-text-centered">
-              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
-                <source src="./static/videos/embodiment.mp4" type="video/mp4">
-              </video>
-            </div>
-          </div>
+        <div class="has-text-centered" style="margin: 2rem 0;">
+          <button id="show-more-demos" class="button is-link is-medium">
+            <span><strong>Show More Demos</strong></span>
+            <span class="icon">
+              <i class="fas fa-chevron-down"></i>
+            </span>
+          </button>
         </div>
 
-        <div class="columns is-multiline">
+        <div id="additional-demos" class="columns is-multiline" style="display: none;">
           <div class="column is-half">
             <div class="video-container has-text-centered">
               <video autoplay muted loop playsinline height="100%" style="width: 100%;">
@@ -321,6 +294,39 @@
               </video>
             </div>
           </div>
+
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>         
+
         </div>
 
       </div>
