@@ -180,3 +180,38 @@ transition: opacity 1.0s;
   z-index: 2; /* Ensure text is above the overlay */
   transition: opacity 1.0s;
 }
+
+.title-with-lines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.title-with-lines:before,
+.title-with-lines:after {
+  content: "";
+  height: 1px;
+  background-color: #cccccc;
+  flex-grow: 1;
+  margin: 0 20px;
+}
+
+.video-container {
+  margin-bottom: 1.5rem;
+  padding: 10px;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.video-container video {
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.video-container p {
+  margin-top: 10px;
+  color: rgb(0, 100, 200);
+  font-size: 1.1rem;
+}

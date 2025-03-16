@@ -65,11 +65,11 @@
               </span>
               <span>arXiv (coming soon)</span>
             </a>
-            <a class="button is-inverted is-large" href="https://yangsizhe.github.io/splatforge" >
+            <a class="button is-inverted is-large" href="https://github.com/OpenRobotLab/SplatForge" >
               <span class="icon" style="margin-right:5px;">
-                <img src="./static/images/github.svg" alt="ArXiv" />
+                <img src="./static/images/github.svg" alt="Code" />
               </span>
-              <span>Code (coming soon)</span>
+              <span>Code</span>
             </a>
           </div>
         </div>
@@ -130,7 +130,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths is-centered">
-        <h2 class="title is-3 has-text-centered is-size-5-mobile">Method</h2>
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(0, 100, 200);">Method</h2>
 
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem;">
@@ -152,7 +152,8 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths is-centered">
-        <h2 class="title is-3 has-text-centered is-size-5-mobile">Augmented Demonstrations</h2>
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines " style="color: rgb(0, 100, 200);">Augmented Demonstrations</h2>
+        <br>
 
         <video autoplay muted loop playsinline height="100%">
           <source src="./static/videos/augmented_demo.mp4" type="video/mp4">
@@ -167,31 +168,158 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths is-centered">
-        <h2 class="title is-3 has-text-centered is-size-5-mobile">Real World Deployment</h2>
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(0, 100, 200);">Real World Deployment</h2>
+        <br>
 
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/lighting.mp4" type="video/mp4">
-        </video>
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(0, 130, 220);">Four Tasks</h3>
 
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/appearance.mp4" type="video/mp4">
-        </video>
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/camera_view.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Pick Object</p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/object_type.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Close Drawer</p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/object_pose.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Pick-Place-Close</p>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+              <p class="has-text-centered mt-2" style="font-weight: bold;">Dual-Pick-Place</p>
+            </div>
+          </div>
+        </div>
 
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/camera_view.mp4" type="video/mp4">
-        </video>
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(0, 130, 220);">Generalization</h3>
 
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/object_type.mp4" type="video/mp4">
-        </video>
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/lighting.mp4" type="video/mp4">
+          </video>
+        </div>
 
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/object_pose.mp4" type="video/mp4">
-        </video>
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/appearance.mp4" type="video/mp4">
+          </video>
+        </div>
 
-        <video autoplay muted loop playsinline height="100%">
-          <source src="./static/videos/embodiment.mp4" type="video/mp4">
-        </video>
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/camera_view.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/object_type.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/object_pose.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline height="100%">
+            <source src="./static/videos/embodiment.mp4" type="video/mp4">
+          </video>
+        </div>
+        
+        <br>
+
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(0, 130, 220);">More Demos</h3>
+
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/camera_view.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/object_type.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/object_pose.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/camera_view.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/object_type.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/object_pose.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+          
+          <div class="column is-half">
+            <div class="video-container has-text-centered">
+              <video autoplay muted loop playsinline height="100%" style="width: 100%;">
+                <source src="./static/videos/embodiment.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -243,7 +371,6 @@
     </div>
     <br>
 
-    <!-- <pre class="is-hidden-mobile"><code> TODO </code></pre> -->
 
     <p>
       If you have any questions, please contact <a href="https://yangsizhe.github.io/">Sizhe Yang</a> and <a
