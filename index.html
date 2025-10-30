@@ -6,10 +6,7 @@
     <meta property="og:title" content="Sizhe Yang">
     <meta property="og:image" content="files\images\selfie.jpg">
     <meta property="og:url" content="https://yangsizhe.github.io/">
-    <!-- <meta name="twitter:card" content="summary_large_image"> -->
-    <!-- <link rel="apple-touch-icon" href="https://yanjieze.com/images/me.JPG"> -->
     <link rel="icon" type="image/png" href="files\images\icon_white_bg.jpg">
-    <!-- <link rel="manifest" href="https://yanjieze.com/miscs/site.webmanifest"> -->
     <link rel="stylesheet" href="./files/style.css">
 </head>
 
@@ -41,7 +38,7 @@
 </div>
 <div class="content" style="padding-bottom: 64px;">
     <div>
-        <p>I am a first-year Ph.D. student of <a href="http://mmlab.ie.cuhk.edu.hk/">MMLab</a>, <a href="https://www.cuhk.edu.hk/english/index.html">the Chinese University of Hong Kong</a>, supervised by Prof. <a href="http://dahua.site/">Dahua Lin</a>. Prior to this, I received my Bachelor's degree in Software Engineering at <a href="https://www.uestc.edu.cn/">University of Electronic Science and Technology of China</a>.
+        <p>I am a second-year Ph.D. student of <a href="http://mmlab.ie.cuhk.edu.hk/">MMLab</a>, <a href="https://www.cuhk.edu.hk/english/index.html">the Chinese University of Hong Kong</a>, supervised by Prof. <a href="http://dahua.site/">Dahua Lin</a>. Prior to this, I received my Bachelor's degree in Software Engineering at <a href="https://www.uestc.edu.cn/">University of Electronic Science and Technology of China</a>.
             <br><br>
         Currently I work with <a href="https://oceanpang.github.io/">Jiangmiao Pang</a> and <a href="https://increase24.github.io/">Jia Zeng</a> at <a href="https://www.shlab.org.cn/">Shanghai AI Laboratory</a>, focusing on <span class="bold">Embodied AI</span>. 
         <!-- Currently I work with <a href="https://yanchaoyang.github.io/">Prof. Yanchao Yang</a> at <a href="https://www.hku.hk/">the University of Hong Kong</a>, focusing on <span class="bold">Embodied AI</span>.  -->
@@ -51,9 +48,11 @@
     <div>
         <h2 class="noselect">Research Interest</h2>
         <p>
-            <span class="bold">Embodied AI</span>, <span class="bold">Robotics</span>, and <span class="bold">Representation learning</span>
+            <span class="bold">Embodied AI</span> and <span class="bold">Robotics</span>.
         </p>
     </div>
+
+
     <style>
         .button {
             border: none;
@@ -64,7 +63,7 @@
             cursor: pointer;
             outline: none;
         }
-
+    
         .selected-button {
             border: none;
             background-color: transparent;
@@ -74,15 +73,18 @@
             cursor: pointer;
             outline: none;
             color: #f09228;
-          }
+        }
     </style>
     <div>
         <h2 class="noselect">Publications</h2>
         <p>
-        <button class="button selected-button" id="button1" onclick="showSelectedPublications(); selectButton('button1')">Selected Papers</button> /
-        <button class="button" id="button2" onclick="showFullPublications(); selectButton('button2')">Full Papers by Year</button>. Representative papers are <span style="background-color: #e3f1f7;">highlighted</span>.
-    </p>
-    (* indicates equal contribution)<br><br>
+            See my <a href="https://scholar.google.com/citations?user=ue3SjGgAAAAJ&hl=zh-CN&oi=ao">Google Scholar</a> profile for a full list of publications.
+        </p>
+        <p>
+            Representative papers are <span style="background-color: #e3f1f7;">highlighted</span>.
+        </p>
+        
+        (* indicates equal contribution)<br><br>
 
         <div id="selected_publications">
             <div class="highlight publication row clearfix">
@@ -90,7 +92,7 @@
                 <div class="row-text">
                     <a class="publication-title bold" href="https://arxiv.org/abs/2504.13175">Novel Demonstration Generation with Gaussian Splatting Enables Robust One-Shot Manipulation</a><br>
                     <span class="bold">Sizhe Yang*</span>, Wenye Yu*, Jia Zeng, Jun Lv, Kerui Ren, Cewu Lu, Dahua Lin, Jiangmiao Pang<br>
-                    <span class="italic">Robotics: Science and Systems (<a href="https://roboticsconference.org/">RSS</a>)</span>, 2025<br>
+                    <span class="italic">Robotics: Science and Systems (<a href="https://roboticsconference.org/">RSS</a>)</span>, 2025 <span class="bold">(Oral)</span><br>
                     <a class="btn btn-orange" href="https://yangsizhe.github.io/robosplat/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2504.13175">arXiv</a> / <a href="https://github.com/OpenRobotLab/RoboSplat/">code</a>
                 </div>
             </div>
@@ -99,12 +101,12 @@
                 <div class="row-media" style="background-image: url(files/images/Seer.png);"></div>
                 <div class="row-text">
                     <a class="publication-title bold" href="https://arxiv.org/abs/2412.15109">Predictive Inverse Dynamics Models are Scalable Learners for Robotic Manipulation</a><br>
-                    Yang Tian*, <span class="bold">Sizhe Yang*</span>, Jia Zeng, Ping Wang, Dahua Lin, Hao Dong, Jiangmiao Pang<br>
+                    <span class="bold">Sizhe Yang*</span>, Yang Tian* (* equal contribution, author ordering determined by coin flip), Jia Zeng, Ping Wang, Dahua Lin, Hao Dong, Jiangmiao Pang<br>
                     <span class="italic">The International Conference on Learning Representations (<a href="https://iclr.cc">ICLR</a>)</span>, 2025 <span class="bold">(Oral)</span><br>
                     <a class="btn btn-orange" href="https://nimolty.github.io/Seer/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2412.15109">arXiv</a> / <a href="https://github.com/OpenRobotLab/Seer">code</a>
                 </div>
             </div>
-            
+
             <div class="highlight publication row clearfix">
                 <div class="row-media" style="background-image: url(files/images/MoVie.gif);"></div>
                 <div class="row-text">
@@ -126,113 +128,9 @@
             </div>
 
         </div>
-
-        <div id="full_publications" style="display: none;">
-            <div class="highlight publication row clearfix">
-                <div class="row-media" style="background-image: url(files/images/robosplat.jpg);"></div>
-                <div class="row-text">
-                    <a class="publication-title bold" href="https://arxiv.org/abs/2504.13175">Novel Demonstration Generation with Gaussian Splatting Enables Robust One-Shot Manipulation</a><br>
-                    <span class="bold">Sizhe Yang*</span>, Wenye Yu*, Jia Zeng, Jun Lv, Kerui Ren, Cewu Lu, Dahua Lin, Jiangmiao Pang<br>
-                    <span class="italic">Robotics: Science and Systems (<a href="https://roboticsconference.org/">RSS</a>)</span>, 2025<br>
-                    <a class="btn btn-orange" href="https://yangsizhe.github.io/robosplat/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2504.13175">arXiv</a> / <a href="https://github.com/OpenRobotLab/RoboSplat/">code</a>
-                </div>
-            </div>
-
-            <div class="highlight publication row clearfix">
-                <div class="row-media" style="background-image: url(files/images/Seer.png);"></div>
-                <div class="row-text">
-                    <a class="publication-title bold" href="https://arxiv.org/abs/2412.15109">Predictive Inverse Dynamics Models are Scalable Learners for Robotic Manipulation</a><br>
-                    Yang Tian*, <span class="bold">Sizhe Yang*</span>, Jia Zeng, Ping Wang, Dahua Lin, Hao Dong, Jiangmiao Pang<br>
-                    <span class="italic">The International Conference on Learning Representations (<a href="https://iclr.cc">ICLR</a>)</span>, 2025 <span class="bold">(Oral)</span><br>
-                    <a class="btn btn-orange" href="https://nimolty.github.io/Seer/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2412.15109">arXiv</a> / <a href="https://github.com/OpenRobotLab/Seer">code</a>
-                </div>
-            </div>
-            
-            <div class="highlight publication row clearfix">
-                <div class="row-media" style="background-image: url(files/images/MoVie.gif);"></div>
-                <div class="row-text">
-                    <a class="publication-title bold" href="https://arxiv.org/abs/2307.00972">MoVie: Visual Model-Based Policy Adaptation for View Generalization</a><br>
-                    <span class="bold">Sizhe Yang*</span>, Yanjie Ze*, Huazhe Xu<br>
-                    <span class="italic">Conference on Neural Information Processing Systems (<a href="https://nips.cc/Conferences/2023">NeurIPS</a>)</span>, 2023<br>
-                    <a class="btn btn-orange" href="https://yangsizhe.github.io/MoVie/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2307.00972">arXiv</a> / <a href="https://github.com/yangsizhe/MoVie/">code</a>
-                </div>
-            </div>
-            
-            <div class="publication row clearfix">
-                <div class="row-media" style="background-image: url(files/images/RL-ViGen.jpg);"></div>
-                <div class="row-text">
-                    <a class="publication-title bold" href="https://arxiv.org/abs/2307.10224">RL-ViGen: A Reinforcement Learning Benchmark for Visual Generalization</a><br>
-                    Zhecheng Yuan*, <span class="bold">Sizhe Yang*</span>, Pu Hua, Can Chang, Kaizhe Hu, Xiaolong Wang, Huazhe Xu<br>
-                    <span class="italic">Conference on Neural Information Processing Systems Datasets and Benchmarks Track (<a href="https://nips.cc/Conferences/2023">NeurIPS</a>)</span>, 2023<br>
-                    <a class="btn btn-orange" href="https://gemcollector.github.io/RL-ViGen/">project page</a> / <a class="btn btn-red" href="https://arxiv.org/abs/2307.10224">arXiv</a> / <a href="https://github.com/gemcollector/RL-ViGen">code</a>
-                </div>
-            </div>
-
-
-        </div>
-
-        <script>
-            function showFullPublications() {
-                var selectedPublicationsDiv = document.getElementById('selected_publications');
-                selectedPublicationsDiv.style.display = 'none';
-
-                var fullPublicationsDiv = document.getElementById('full_publications');
-                fullPublicationsDiv.style.display = 'block';
-            }
-
-            function showSelectedPublications() {
-                var fullPublicationsDiv = document.getElementById('full_publications');
-                fullPublicationsDiv.style.display = 'none';
-
-                var selectedPublicationsDiv = document.getElementById('selected_publications');
-                selectedPublicationsDiv.style.display = 'block';
-            }
-
-            function selectButton(buttonId) {
-                var button1 = document.getElementById('button1');
-                var button2 = document.getElementById('button2');
-            
-                if (buttonId === 'button1') {
-                  button1.classList.add('selected-button');
-                  button2.classList.remove('selected-button');
-                } else if (buttonId === 'button2') {
-                  button1.classList.remove('selected-button');
-                  button2.classList.add('selected-button');
-                }
-              }
-        </script>
-
-
-
     </div>
 
 
-    <!-- <div>
-        <h2 class="noselect">Academic Performance</h2>
-        GPA: <span class="italic">91/100, 4.0/4.3</span>
-        <br>
-        <b><span class="bold"> Rank 1/120 for the 6th semester</span></b>
-        <details>
-            <summary>Related A+ courses</summary>
-            CS420: Machine Learning. (A+)
-            <br>
-            CS245: Data Science. (A+)
-            <br>
-            CS337: Computer Graphics. (A+)
-            <br>
-            CS386: Digital Image Processing. (A+)
-            <br>
-            CS499: Mathematical Foundations of Computer Science. (A+)
-            <br>
-            CS214: Algorithm and Complexity. (A+)
-            <br>
-            MA119: Probability and Statistics. (A+)
-            <br>
-            ...
-        </details>
-    </div> -->
-        
-    
     <div>
         <h2 class="noselect">Honors and Awards</h2>
         • SenseTime Scholarship (selects 30 undergraduates in the field of AI from all over China annually) <br>
@@ -246,6 +144,7 @@
         I am willing to help build the academic community. I serve as the reviewer for <br><br>
         • TMLR <br>
         • NeurIPS <br>
+        • ICRA <br>
     </div>
 
 
@@ -254,7 +153,7 @@
 
 <div class="footer noselect">
     <div class="footer-content">
-        © 2023 Sizhe Yang. Template from <a style="color: rgb(0, 0, 0); text-decoration: underline;" href="https://yanjieze.com/">Yanjie Ze</a>.
+        © 2025 Sizhe Yang. Template from <a style="color: rgb(0, 0, 0); text-decoration: underline;" href="https://yanjieze.com/">Yanjie Ze</a>.
     </div>
 </div>
 
