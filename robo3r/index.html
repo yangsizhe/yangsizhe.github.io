@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Robo3R">
+  <meta name="keywords" content="Robot Learning, Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Robo3R
+  </title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-QZ38WT2YPD');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <!-- 添加额外的样式，确保行间距在GitHub Pages上正确显示 -->
+  <style>
+    /* 确保行间距样式被优先应用 */
+    .subtitle.is-1.publication-title {
+      line-height: 1.2 !important;
+      max-height: none !important;
+    }
+    
+    h1.subtitle.is-1.publication-title {
+      line-height: 1.2 !important;
+      max-height: none !important;
+    }
+    
+    p, .subtitle, .content {
+      line-height: 1.4 !important;
+    }
+    
+    .subtitle strong {
+      line-height: 1.7 !important;
+    }
+    
+    /* 防止GitHub Pages上的样式覆盖 */
+    @media screen and (min-width: 769px) {
+      .subtitle.is-1.publication-title {
+        line-height: 1.2 !important;
+      }
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+
+  <div class="hero-video" style="height: 80%; width: 100vh; min-width: 100%; min-height: 56.25vw;">
+    <video playsinline autoplay muted loop>
+      <source src=" ./static/videos/highlight.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <!-- class="navbar-item  pl-4 pr-4" -->
+            <!-- class="button is-inverted is-large" -->
+            <!-- <a class="button is-inverted is-large" href="./static/Robo3R.pdf">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/pdf.svg" alt="PDF" />
+              </span>
+              <span>Paper</span>
+            </a> -->
+            <a class="button is-inverted is-large" href="">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span>
+            </a>
+            <a class="button is-inverted is-large" href="https://github.com/OpenRobotLab/robo3r" >
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/github.svg" alt="Code" />
+              </span>
+              <span>Code</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 8rem; line-height: 1.1;">
+        <em><strong style="color: rgb(96, 208, 171);">Robo3R</strong></em>
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem; line-height: 1.2 !important; max-height: none !important;">
+        <!-- Novel Demonstration Generation <br class="is-hidden-mobile"> with Gaussian Splatting <br class="is-hidden-mobile"> Enables Robust One-Shot Manipulation -->
+        Enhancing Robotic Manipulation with Accurate Feed-Forward 3D Reconstruction
+      </h1>
+      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 3rem; opacity: 80%; line-height: 1.3 !important;">
+        In Submission
+      </h1>
+    </div>
+  </div>
+
+  <!-- Hero footer: will stick at the bottom -->
+  <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-5">
+      <ul>
+        <li><a href="#overview"><strong>Overview</strong></a></li>
+        <li><a href="#method"><strong>Method</strong></a></li>
+        <li><a href="#qualitative_comparison"><strong>Reconstruction Results</strong></a></li>
+        <li><a href="#application"><strong>Downstream Robotic Manipulation</strong></a></li>
+      </ul>
+    </nav>
+  </div>
+
+</section>
+
+
+
+
+<section class="section is-medium" id="overview">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-justified is-hidden-mobile">
+        <h2 class="subtitle " style="line-height: 1.5;">
+          <strong style="color: rgb(96, 208, 171); font-size: 1.5em;">Robo3R</strong> enables <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">manipulation-ready 3D reconstruction from RGB frames in real time</strong>.
+          <br><br>
+          By achieving accurate metric-scale 3D geometry in the canonical robot frame, Robo3R <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">eliminates the need for depth sensors and calibration, while improving accuracy and robustness</strong> in challenging manipulation scenarios.
+          <br><br>
+          These features <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">lead to notable improvements in downstream applications</strong> such as imitation learning, sim-to-real transfer, grasp synthesis, and collision-free motion planning.
+        </h2>
+      </div>
+    </div>
+
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <figure class="image">
+          <img src="static/images/teaser.jpg" alt="Robo3R Demo">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="method">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(96, 208, 171);">Method</h2>
+        <br>
+
+        <figure class="image">
+          <img src="static/images/model.jpg" alt="Model">
+        </figure>
+
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            RGB images and robot states are encoded and fused. The transformer backbone processes the resulting features through alternating global and frame-wise attention. The masked point head decodes scale-invariant local geometry, while the relative pose head outputs relative poses for registering points across multiple views. S.T. tokens read out the global similarity transformation, which maps the points into metric-scale 3D geometry in the canonical robot frame.
+          </p>
+        </div>
+
+
+        <figure class="image">
+          <img src="static/images/module.jpg" alt="Module">
+        </figure>
+
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            <strong style="color: rgb(255, 146, 128); font-size: 1.05em;">(a)</strong> To address the over-smoothing problem for dense prediction, we propose a <strong style="color: rgb(255, 146, 128); font-size: 1.05em;">masked point head</strong> that decomposes point prediction into depth, normalized image coordinate, and mask predictions. Through unprojection, masking, and combination, we obtain sharp points with fine-grained geometric details.
+            <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">(b)</strong> The <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">extrinsic estimation module</strong> extracts robot keypoints and accurately estimates the camera extrinsics by solving the Perspective-n-Point (PnP) problem; the extrinsics are used to refine the global similarity transformation.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="qualitative_comparison">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines " style="color: rgb(96, 208, 171);">Reconstruction Results</h2>
+        <br>
+        
+        <figure class="image">
+          <img src="static/images/qualitative_comparison.jpg" alt="Qualitative Comparison">
+        </figure>
+
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            Robo3R robustly handles challenging scenarios where the other reconstruction models and depth cameras fail. Specifically, Robo3R is capable of reconstructing <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">objects as narrow as 1.5 mm (spanning only 1 to 2 pixels in the image)</strong>, whereas other methods, including depth cameras, fail to capture such fine geometry (row 1). Furthermore, Robo3R successfully handles <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">reflective and transparent objects</strong> that blind depth sensors (row 2). Even <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">in cluttered scenes</strong> that include bimanual robots with dexterous hands, Robo3R consistently produces accurate and clean point clouds (row 3).
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-small" id="application">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(96, 208, 171);">Downstream Robotic Manipulation</h2>
+        <br>
+
+        <figure class="image">
+          <img src="static/images/application.jpg" alt="Application">
+        </figure>
+
+        <br><br>
+
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Imitation Learning</h3>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_il_sweep_bean.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_il_insert_screw.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_il_breakfast.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_il_bidex_pour.mp4" type="video/mp4">
+          </video>
+        </div>
+
+
+        <br>
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Grasp Synthesis</h3>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_grasp_transparent.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_grasp_small.mp4" type="video/mp4">
+          </video>
+        </div>
+
+
+        <br>
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Collision-Free Motion Planning</h3>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_mp_reflective.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <div class="video-container">
+          <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
+            <source src="./static/videos/demo_mp_thin.mp4" type="video/mp4">
+          </video>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-small">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
+        <div class="author-block has-text-centered has-addons-centered">
+          Sizhe Yang<sup>1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          Lining Xu<sup>1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          Hao Li<sup>1,3</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          Juncheng Mu<sup>1,4</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          Jia Zeng<sup>1</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          Dahua Lin<sup>1,2</sup>
+        </div>
+        <div class="author-block has-text-centered has-addons-centered">
+          Jiangmiao Pang<sup>1</sup>
+        </div>
+      </div>
+
+      <div class="publication-authors">
+        <span class="author-block"><sup>1</sup>Shanghai AI Laboratory, </span>
+        <span class="author-block"><sup>2</sup>The Chinese University of Hong Kong, </span>
+        <span class="author-block"><sup>3</sup>University of Science and Technology of China, </span>
+        <span class="author-block"><sup>3</sup>Tsinghua University</span>
+        <br>
+        <!-- <span class="author-block">* Equal contribution</span> -->
+      </div>
+
+    </div>
+    <br>
+
+    <p>
+      If you have any questions, please contact <a href="https://yangsizhe.github.io/">Sizhe Yang.
+    </p>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            Website template modified from <a href="https://nerfies.github.io/">NeRFies</a> and <a href="https://github.com/umi-on-legs/umi-on-legs.github.io/">UMI on Legs</a>.
+          </p>
+          <p>
+            This website is licensed under a <a rel="license"
+              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+              Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+
+</html>
