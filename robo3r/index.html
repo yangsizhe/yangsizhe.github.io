@@ -3,13 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description"
-    content="Robo3R">
+  <meta name="description" content="Robo3R">
   <meta name="keywords" content="Robot Learning, Manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>
-    Robo3R
-  </title>
+  <title>Robo3R</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
@@ -17,7 +14,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-QZ38WT2YPD');
   </script>
 
@@ -28,73 +24,111 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
 
-  <!-- 添加额外的样式，确保行间距在GitHub Pages上正确显示 -->
   <style>
-    /* 确保行间距样式被优先应用 */
     .subtitle.is-1.publication-title {
       line-height: 1.2 !important;
       max-height: none !important;
     }
-    
     h1.subtitle.is-1.publication-title {
       line-height: 1.2 !important;
       max-height: none !important;
     }
-    
     p, .subtitle, .content {
       line-height: 1.4 !important;
     }
-    
     .subtitle strong {
       line-height: 1.7 !important;
     }
-    
-    /* 防止GitHub Pages上的样式覆盖 */
     @media screen and (min-width: 769px) {
       .subtitle.is-1.publication-title {
         line-height: 1.2 !important;
       }
     }
+
+    /* ===== PLY Viewers ===== */
+    #ply-viewers-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .ply-viewer-row {
+      width: 100%;
+    }
+    .ply-label {
+      display: block;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ccc;
+      margin-bottom: 0.5rem;
+    }
+    .ply-canvas-wrap {
+      width: 100%;
+      /* fallback for browsers that don't support aspect-ratio */
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 */
+      background: #1a1a2e;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: grab;
+      /* border: 1px solid rgba(96, 208, 171, 0.25); */
+    }
+    .ply-canvas-wrap:active {
+      cursor: grabbing;
+    }
+    .ply-canvas-wrap canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .ply-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(96, 208, 171);
+      font-size: 1rem;
+      font-family: sans-serif;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .ply-loading.hidden { display: none; }
   </style>
 
   <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
 </head>
 
-<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+<body>
 
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
   <div class="hero-video" style="height: 80%; width: 100vh; min-width: 100%; min-height: 56.25vw;">
     <video playsinline autoplay muted loop>
-      <source src=" ./static/videos/highlight.mp4" type="video/mp4">
+      <source src="./static/videos/highlight.mp4" type="video/mp4">
     </video>
   </div>
 
   <div class="overlay"></div>
-  <!-- Hero head: will stick at the top -->
   <div class="hero-head is-hidden-mobile">
     <header class="navbar">
       <div class="container is-size-5">
         <div class="navbar-menu">
           <div class="navbar-end">
-            <!-- class="navbar-item  pl-4 pr-4" -->
-            <!-- class="button is-inverted is-large" -->
-            <!-- <a class="button is-inverted is-large" href="./static/Robo3R.pdf">
-              <span class="icon" style="margin-right:5px;">
-                <img src="./static/images/pdf.svg" alt="PDF" />
-              </span>
-              <span>Paper</span>
-            </a> -->
             <a class="button is-inverted is-large" href="">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/arxiv.svg" alt="ArXiv" />
               </span>
               <span>arXiv</span>
             </a>
-            <a class="button is-inverted is-large" href="https://github.com/InternRobotics/robo3r" >
+            <a class="button is-inverted is-large" href="https://github.com/InternRobotics/Robo3R">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/github.svg" alt="Code" />
               </span>
@@ -106,24 +140,18 @@
     </header>
   </div>
 
-  <!-- Hero content: will be in the middle -->
   <div class="hero-body">
     <div class="container has-text-centered">
       <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
       <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 8rem; line-height: 1.1;">
-        <em><strong style="color: rgb(96, 208, 171);">Robo3R</strong></em>
+        <em><strong style="color: rgb(96, 208, 171);">Robo3R</strong>:</em>
       </h1>
       <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem; line-height: 1.2 !important; max-height: none !important;">
-        <!-- Novel Demonstration Generation <br class="is-hidden-mobile"> with Gaussian Splatting <br class="is-hidden-mobile"> Enables Robust One-Shot Manipulation -->
         Enhancing Robotic Manipulation with Accurate Feed-Forward 3D Reconstruction
-      </h1>
-      <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 3rem; opacity: 80%; line-height: 1.3 !important;">
-        In Submission
       </h1>
     </div>
   </div>
 
-  <!-- Hero footer: will stick at the bottom -->
   <div class="hero-foot is-hidden-mobile">
     <nav class="tabs is-boxed is-fullwidth is-size-5">
       <ul>
@@ -134,17 +162,14 @@
       </ul>
     </nav>
   </div>
-
 </section>
-
-
 
 
 <section class="section is-medium" id="overview">
   <div class="container is-max-widescreen">
     <div class="columns is-centered">
       <div class="column is-four-fifths has-text-justified is-hidden-mobile">
-        <h2 class="subtitle " style="line-height: 1.5;">
+        <h2 class="subtitle" style="line-height: 1.5;">
           <strong style="color: rgb(96, 208, 171); font-size: 1.5em;">Robo3R</strong> enables <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">manipulation-ready 3D reconstruction from RGB frames in real time</strong>.
           <br><br>
           By achieving accurate metric-scale 3D geometry in the canonical robot frame, Robo3R <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">eliminates the need for depth sensors and calibration, while improving accuracy and robustness</strong> in challenging manipulation scenarios.
@@ -153,7 +178,6 @@
         </h2>
       </div>
     </div>
-
     <div class="columns is-centered">
       <div class="column is-four-fifths">
         <figure class="image">
@@ -171,29 +195,23 @@
       <div class="column is-four-fifths is-centered">
         <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(96, 208, 171);">Method</h2>
         <br>
-
         <figure class="image">
           <img src="static/images/model.jpg" alt="Model">
         </figure>
-
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem; line-height: 1.5;">
             RGB images and robot states are encoded and fused. The transformer backbone processes the resulting features through alternating global and frame-wise attention. The masked point head decodes scale-invariant local geometry, while the relative pose head outputs relative poses for registering points across multiple views. S.T. tokens read out the global similarity transformation, which maps the points into metric-scale 3D geometry in the canonical robot frame.
           </p>
         </div>
-
-
         <figure class="image">
           <img src="static/images/module.jpg" alt="Module">
         </figure>
-
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem; line-height: 1.5;">
             <strong style="color: rgb(255, 146, 128); font-size: 1.05em;">(a)</strong> To address the over-smoothing problem for dense prediction, we propose a <strong style="color: rgb(255, 146, 128); font-size: 1.05em;">masked point head</strong> that decomposes point prediction into depth, normalized image coordinate, and mask predictions. Through unprojection, masking, and combination, we obtain sharp points with fine-grained geometric details.
             <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">(b)</strong> The <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">extrinsic estimation module</strong> extracts robot keypoints and accurately estimates the camera extrinsics by solving the Perspective-n-Point (PnP) problem; the extrinsics are used to refine the global similarity transformation.
           </p>
         </div>
-
       </div>
     </div>
   </div>
@@ -204,23 +222,40 @@
   <div class="container is-max-widescreen">
     <div class="columns is-centered">
       <div class="column is-four-fifths is-centered">
-        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines " style="color: rgb(96, 208, 171);">Reconstruction Results</h2>
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(96, 208, 171);">Reconstruction Results</h2>
         <br>
-        
         <figure class="image">
-          <img src="static/images/qualitative_comparison.jpg" alt="Qualitative Comparison">
+          <img src="static/images/qualitative_comparison_with_lingbot.jpg" alt="Qualitative Comparison">
         </figure>
-
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem; line-height: 1.5;">
             Robo3R robustly handles challenging scenarios where the other reconstruction models and depth cameras fail. Specifically, Robo3R is capable of reconstructing <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">objects as narrow as 1.5 mm (spanning only 1 to 2 pixels in the image)</strong>, whereas other methods, including depth cameras, fail to capture such fine geometry (row 1). Furthermore, Robo3R successfully handles <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">reflective and transparent objects</strong> that blind depth sensors (row 2). Even <strong style="color: rgb(96, 208, 171); font-size: 1.05em;">in cluttered scenes</strong> that include bimanual robots with dexterous hands, Robo3R consistently produces accurate and clean point clouds (row 3).
           </p>
         </div>
 
+        <br>
+        <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Interactive Demo</h3>
+
+        <div id="ply-viewers-container">
+          <div class="ply-viewer-row">
+            <label class="ply-label">Thin Objects</label>
+            <div class="ply-canvas-wrap" id="viewer1"></div>
+          </div>
+          <div class="ply-viewer-row">
+            <label class="ply-label">Reflective &amp; Transparent Objects</label>
+            <div class="ply-canvas-wrap" id="viewer2"></div>
+          </div>
+          <div class="ply-viewer-row">
+            <label class="ply-label">The Cluttered Scene</label>
+            <div class="ply-canvas-wrap" id="viewer3"></div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
 </section>
+
 
 <section class="section is-small" id="application">
   <div class="container is-max-widescreen">
@@ -228,71 +263,58 @@
       <div class="column is-four-fifths is-centered">
         <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(96, 208, 171);">Downstream Robotic Manipulation</h2>
         <br>
-
         <figure class="image">
           <img src="static/images/application.jpg" alt="Application">
         </figure>
-
         <br><br>
 
         <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Imitation Learning</h3>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_il_sweep_bean.mp4" type="video/mp4">
           </video>
         </div>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_il_insert_screw.mp4" type="video/mp4">
           </video>
         </div>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_il_breakfast.mp4" type="video/mp4">
           </video>
         </div>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_il_bidex_pour.mp4" type="video/mp4">
           </video>
         </div>
 
-
         <br>
         <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Grasp Synthesis</h3>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_grasp_transparent.mp4" type="video/mp4">
           </video>
         </div>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_grasp_small.mp4" type="video/mp4">
           </video>
         </div>
 
-
         <br>
         <h3 class="title is-3 has-text-centered is-size-5-mobile" style="color: rgb(80, 180, 155); font-size: 1.6rem;">Collision-Free Motion Planning</h3>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_mp_reflective.mp4" type="video/mp4">
           </video>
         </div>
-
         <div class="video-container">
           <video autoplay muted loop playsinline style="width: 90%; height: auto; display: block; margin: 0 auto;">
             <source src="./static/videos/demo_mp_thin.mp4" type="video/mp4">
           </video>
         </div>
-
 
       </div>
     </div>
@@ -300,50 +322,29 @@
 </section>
 
 
-
 <section class="section is-small">
   <div class="container is-max-widescreen">
     <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
     <div class="container has-text-centered">
       <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
-        <div class="author-block has-text-centered has-addons-centered">
-          Sizhe Yang<sup>1,2</sup>
-        </div>
-        <div class="author-block has-text-centered has-addons-centered">
-          Lining Xu<sup>1,2</sup>
-        </div>
-        <div class="author-block has-text-centered has-addons-centered">
-          Hao Li<sup>1,3</sup>
-        </div>
-        <div class="author-block has-text-centered has-addons-centered">
-          Juncheng Mu<sup>1,4</sup>
-        </div>
-        <div class="author-block has-text-centered has-addons-centered">
-          Jia Zeng<sup>1</sup>
-        </div>
-        <div class="author-block has-text-centered has-addons-centered">
-          Dahua Lin<sup>1,2</sup>
-        </div>
-        <div class="author-block has-text-centered has-addons-centered">
-          Jiangmiao Pang<sup>1</sup>
-        </div>
+        <div class="author-block has-text-centered has-addons-centered">Sizhe Yang<sup>1,2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Lining Xu<sup>1,2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Hao Li<sup>1,3</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Juncheng Mu<sup>1,4</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Jia Zeng<sup>1</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Dahua Lin<sup>1,2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Jiangmiao Pang<sup>1</sup></div>
       </div>
-
       <div class="publication-authors">
         <span class="author-block"><sup>1</sup>Shanghai AI Laboratory, </span>
         <span class="author-block"><sup>2</sup>The Chinese University of Hong Kong, </span>
         <span class="author-block"><sup>3</sup>University of Science and Technology of China, </span>
         <span class="author-block"><sup>3</sup>Tsinghua University</span>
         <br>
-        <!-- <span class="author-block">* Equal contribution</span> -->
       </div>
-
     </div>
     <br>
-
-    <p>
-      If you have any questions, please contact <a href="https://yangsizhe.github.io/">Sizhe Yang.
-    </p>
+    <p>If you have any questions, please contact <a href="https://yangsizhe.github.io/">Sizhe Yang</a>.</p>
   </div>
 </section>
 
@@ -353,20 +354,223 @@
     <div class="columns is-centered">
       <div class="column is-8">
         <div class="content">
-          <p>
-            Website template modified from <a href="https://nerfies.github.io/">NeRFies</a> and <a href="https://github.com/umi-on-legs/umi-on-legs.github.io/">UMI on Legs</a>.
-          </p>
-          <p>
-            This website is licensed under a <a rel="license"
-              href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-              Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
+          <p>Website template modified from <a href="https://nerfies.github.io/">NeRFies</a> and <a href="https://github.com/umi-on-legs/umi-on-legs.github.io/">UMI on Legs</a>.</p>
+          <p>This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
         </div>
       </div>
     </div>
   </div>
 </footer>
 
-</body>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.148.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.148.0/examples/jsm/"
+    }
+  }
+</script>
 
+<script type="module">
+  import * as THREE from 'three';
+  import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
+
+  (function () {
+    /* ============================================================
+     *  CONFIGURATION — change the file paths here
+     * ============================================================ */
+    const plyFiles = [
+      'static/pc/pred_pc_cam_tiny.ply',
+      'static/pc/pred_pc_cam_transp.ply',
+      'static/pc/pred_pc_cam_bidex.ply'
+    ];
+    const containerIds = ['viewer1', 'viewer2', 'viewer3'];
+
+    console.log('[PLY Viewer] THREE r' + THREE.REVISION + ', PLYLoader Imported ✓');
+
+    /* ============================================================
+     *  Per-viewer initialisation
+     * ============================================================ */
+    containerIds.forEach(function (id, idx) {
+      createViewer(id, plyFiles[idx]);
+    });
+
+    function createViewer(containerId, plyPath) {
+      var container = document.getElementById(containerId);
+      if (!container) { console.error('[PLY Viewer] Container #' + containerId + ' not found'); return; }
+
+      /* loading indicator */
+      var loadingEl = document.createElement('div');
+      loadingEl.className = 'ply-loading';
+      loadingEl.textContent = 'Loading point cloud…';
+      container.appendChild(loadingEl);
+
+      /* renderer */
+      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x1a1a2e);
+      container.appendChild(renderer.domElement);
+
+      /* scene & camera */
+      var scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xffffff); 
+      var camera = new THREE.PerspectiveCamera(30, 2, 0.01, 100);
+      camera.position.set(0, 0, 0);
+
+      /* ---- Simple orbit controls ---- */
+      // 1. 设置初始状态为 -Math.PI
+      var state = { dragging: false, prevX: 0, prevY: 0, rotX: -Math.PI, rotY: 0, zoom: 2.5 };
+      var pivot = new THREE.Group();
+      scene.add(pivot);
+
+      container.addEventListener('pointerdown', function (e) {
+        state.dragging = true;
+        state.prevX = e.clientX;
+        state.prevY = e.clientY;
+        container.setPointerCapture(e.pointerId);
+      });
+      
+      container.addEventListener('pointermove', function (e) {
+        if (!state.dragging) return;
+        var dx = e.clientX - state.prevX;
+        var dy = e.clientY - state.prevY;
+        
+        // 增量更新角度
+        state.rotY += dx * 0.005;
+        state.rotX += dy * 0.005;
+        
+        // 2. 【关键修改】注释掉下面这行限制代码
+        // 因为 -Math.PI (-3.14) 小于 -Math.PI/2 (-1.57)
+        // 只要一动，Math.max 就会强制把角度变成 -1.57，导致画面跳变
+        // state.rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, state.rotX));
+        
+        state.prevX = e.clientX;
+        state.prevY = e.clientY;
+      });
+      
+      container.addEventListener('pointerup', function (e) {
+        state.dragging = false;
+      });
+      container.addEventListener('pointercancel', function (e) {
+        state.dragging = false;
+      });
+      container.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        state.zoom *= e.deltaY > 0 ? 1.1 : 0.9;
+        state.zoom = Math.max(0.3, Math.min(20, state.zoom));
+      }, { passive: false });
+
+      /* touch pinch-to-zoom */
+      var lastPinchDist = 0;
+      container.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 2) {
+          lastPinchDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+        }
+      }, { passive: true });
+      container.addEventListener('touchmove', function (e) {
+        if (e.touches.length === 2) {
+          var dist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          if (lastPinchDist > 0) {
+            state.zoom *= lastPinchDist / dist;
+            state.zoom = Math.max(0.3, Math.min(20, state.zoom));
+          }
+          lastPinchDist = dist;
+        }
+      }, { passive: true });
+
+      /* ---- Load PLY ---- */
+      console.log('[PLY Viewer] Loading: ' + plyPath);
+      
+      var loader = new PLYLoader();
+      
+      loader.load(
+        plyPath,
+        function (geometry) {
+          console.log('[PLY Viewer] Loaded ' + plyPath + ' — vertices: ' + geometry.attributes.position.count);
+
+          geometry.computeBoundingSphere();
+          var center = geometry.boundingSphere.center;
+          var radius = geometry.boundingSphere.radius;
+
+          geometry.translate(-center.x, -center.y, -center.z);
+
+          /* normalise size */
+          var s = 1.0 / (radius || 1);
+          geometry.scale(s, s, s);
+
+          /* Use vertex colours if available */
+          var hasColors = geometry.hasAttribute('color');
+
+          var material = new THREE.PointsMaterial({
+            size: 0.01,
+            vertexColors: hasColors,
+            color: hasColors ? 0xffffff : 0x60d0ab,
+            sizeAttenuation: true
+          });
+
+          // =========================================================
+          // [Method 2: Shader Injection] 强制提亮逻辑
+          // =========================================================
+          const brightnessFactor = 1.8; 
+          material.onBeforeCompile = function(shader) {
+            shader.uniforms.uBrightness = { value: brightnessFactor };
+            shader.fragmentShader = 'uniform float uBrightness;\n' + shader.fragmentShader;
+            shader.fragmentShader = shader.fragmentShader.replace(
+              '#include <color_fragment>',
+              `
+              #include <color_fragment>
+              diffuseColor.rgb *= uBrightness;
+              `
+            );
+          };
+          // =========================================================
+
+          var points = new THREE.Points(geometry, material);
+          pivot.add(points);
+          loadingEl.classList.add('hidden');
+        },
+        function (xhr) {
+          if (xhr.total) {
+            var pct = Math.round((xhr.loaded / xhr.total) * 100);
+            loadingEl.textContent = 'Loading… ' + pct + '%';
+          }
+        },
+        function (err) {
+          console.error('[PLY Viewer] Failed to load ' + plyPath, err);
+          loadingEl.textContent = '❌ Failed to load ' + plyPath;
+          loadingEl.style.color = '#e74c3c';
+        }
+      );
+
+      /* ---- Render loop ---- */
+      function animate() {
+        requestAnimationFrame(animate);
+
+        var w = container.clientWidth;
+        var h = container.clientHeight;
+        if (w === 0 || h === 0) {
+          h = container.offsetHeight;
+        }
+        if (w === 0 || h === 0) return;
+
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+
+        pivot.rotation.set(state.rotX, state.rotY, 0);
+        camera.position.set(0, 0, state.zoom);
+
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+  })();
+</script>
+</body>
 </html>
