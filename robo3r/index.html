@@ -181,11 +181,11 @@
 
   <div class="hero-body">
     <div class="container has-text-centered">
-      <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 8rem; line-height: 1.1;">
+      <br><br><br><br><br><br><br><br><br><br><br><br>
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 4rem; line-height: 1.1;">
         <em><strong style="color: rgb(96, 208, 171);">Robo3R</strong>:</em>
       </h1>
-      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 4rem; line-height: 1.2 !important; max-height: none !important;">
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3rem; line-height: 1.2 !important; max-height: none !important;">
         Enhancing Robotic Manipulation with Accurate Feed-Forward 3D Reconstruction
       </h1>
     </div>
@@ -278,15 +278,15 @@
         <div id="ply-viewers-container">
           <div class="ply-viewer-row">
             <label class="ply-label">Thin Objects</label>
-            <div class="ply-canvas-wrap" id="viewer1"></div>
+            <div class="ply-canvas-wrap" id="viewer1" style="width: 60%; height: auto; display: block; margin: 0 auto;"></div>
           </div>
           <div class="ply-viewer-row">
             <label class="ply-label">Reflective &amp; Transparent Objects</label>
-            <div class="ply-canvas-wrap" id="viewer2"></div>
+            <div class="ply-canvas-wrap" id="viewer2" style="width: 60%; height: auto; display: block; margin: 0 auto;"></div>
           </div>
           <div class="ply-viewer-row">
             <label class="ply-label">The Cluttered Scene</label>
-            <div class="ply-canvas-wrap" id="viewer3"></div>
+            <div class="ply-canvas-wrap" id="viewer3" style="width: 60%; height: auto; display: block; margin: 0 auto;"></div>
           </div>
         </div>
 
@@ -491,7 +491,7 @@
       /* scene & camera */
       var scene = new THREE.Scene();
       scene.background = new THREE.Color(0xffffff); 
-      var camera = new THREE.PerspectiveCamera(30, 2, 0.01, 100);
+      var camera = new THREE.PerspectiveCamera(45, 2, 0.01, 100);
       camera.position.set(0, 0, 0);
 
       /* ---- Simple orbit controls ---- */
