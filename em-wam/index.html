@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="EM-WAM">
+  <meta name="keywords" content="Robot Learning, Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EM-WAM</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-QZ38WT2YPD');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <style>
+    body {
+      background-color: #F8F8F6;
+    }
+    .subtitle.is-1.publication-title {
+      line-height: 1.2 !important;
+      max-height: none !important;
+    }
+    h1.subtitle.is-1.publication-title {
+      line-height: 1.2 !important;
+      max-height: none !important;
+    }
+    p, .subtitle, .content {
+      line-height: 1.4 !important;
+    }
+    .subtitle strong {
+      line-height: 1.7 !important;
+    }
+    @media screen and (min-width: 769px) {
+      .subtitle.is-1.publication-title {
+        line-height: 1.2 !important;
+      }
+    }
+
+    /* ===== PLY Viewers ===== */
+    #ply-viewers-container {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .ply-viewer-row {
+      width: 100%;
+    }
+    .ply-label {
+      display: block;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #ccc;
+      margin-bottom: 0.5rem;
+    }
+    .ply-canvas-wrap {
+      width: 100%;
+      /* fallback for browsers that don't support aspect-ratio */
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 */
+      background: #1a1a2e;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: grab;
+      /* border: 1px solid rgba(96, 208, 171, 0.25); */
+    }
+    .ply-canvas-wrap:active {
+      cursor: grabbing;
+    }
+    .ply-canvas-wrap canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
+    .ply-loading {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgb(93, 144, 191);
+      font-size: 1rem;
+      font-family: sans-serif;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .ply-loading.hidden { display: none; }
+
+    .bibtex-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    /* 核心：Copy 按钮的样式 */
+    .copy-bibtex-btn {
+        background-color: #2563eb; /* 漂亮的蓝色 */
+        color: white;
+        border: none;
+        border-radius: 6px; /* 圆角 */
+        padding: 8px 16px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px; /* 图标和文字的间距 */
+        transition: background-color 0.2s;
+    }
+
+    /* 鼠标悬停时的效果 */
+    .copy-bibtex-btn:hover {
+        background-color: #1d4ed8; /* 深一点的蓝色 */
+    }
+
+    /* 代码块样式 */
+    pre {
+        background-color: #f5f5f5;
+        padding: 1.5rem;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-family: monospace;
+        font-size: 0.9em;
+        color: #333;
+        border: 1px solid #eee;
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+<section class="hero is-link is-fullheight video" style="overflow: hidden; position:relative;">
+  <div class="hero-video" style="width: 100%; height: 100%; min-width: 100%; min-height: 100%;">
+    <video playsinline autoplay muted loop>
+      <source src="./static/videos/highlight.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <div class="overlay"></div>
+  <div class="hero-head is-hidden-mobile">
+    <header class="navbar">
+      <div class="container is-size-5">
+        <div class="navbar-menu">
+          <div class="navbar-end">
+            <a class="button is-large" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: white;" href="">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/arxiv.svg" alt="ArXiv" />
+              </span>
+              <span>arXiv</span>
+            </a>
+            <a class="button is-large" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: white;" href="https://github.com/yangsizhe/em-wam">
+              <span class="icon" style="margin-right:5px;">
+                <img src="./static/images/github.svg" alt="Code" />
+              </span>
+              <span>Code</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <div class="hero-body">
+    <div class="container has-text-centered">
+      <br><br><br><br><br><br><br>
+      <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 4rem; line-height: 1.1;">
+        <em><strong style="color: rgb(93, 144, 191);">EM-WAM</strong>:</em>
+      </h1>
+      <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3rem; line-height: 1.2 !important; max-height: none !important;">
+        Efficient World Action Modeling with <br>
+        Persistent Memory
+      </h1>
+      <!-- <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 3rem; opacity: 80%; line-height: 1.2 !important;">
+        RSS 2026
+      </h1> -->
+    </div>
+  </div>
+
+  <div class="hero-foot is-hidden-mobile">
+    <nav class="tabs is-boxed is-fullwidth is-size-5" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);">
+      <ul>
+        <li><a href="#overview"><strong>Overview</strong></a></li>
+        <li><a href="#method"><strong>Method</strong></a></li>
+        <li><a href="#qualitative_comparison"><strong>Results</strong></a></li>
+        <li><a href="#application"><strong>Demo</strong></a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+
+<section class="section is-medium" id="overview">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <figure class="image">
+          <img src="static/images/teaser.jpg" alt="Overview">
+        </figure>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-four-fifths has-text-justified is-hidden-mobile">
+        <h2 class="subtitle" style="line-height: 1.5;">
+          <strong style="color: rgb(93, 144, 191); font-size: 1.5em;">EM-WAM</strong> is a world action model with <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">efficient persistent memory</strong> for robotic manipulation.
+          <br><br>
+          Its hybrid memory design combines recent frames, event-boundary anchors, and compact gist tokens, <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">reducing inference complexity from O(N) to O(N/d) while preserving long-range context</strong>.
+          <br><br>
+          EM-WAM <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">outperforms strong VLA and WAM baselines</strong> on long-horizon, memory-dependent tasks in both simulation and the real world.
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="method">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(93, 144, 191);">Method</h2>
+        <br>
+        <figure class="image">
+          <img src="static/images/pipeline.jpg" alt="Pipeline">
+        </figure>
+        <br>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Model Architecture.</strong> Observations are first encoded into compact video latents by a causal video VAE. A video DiT processes visual dynamics and maintains a temporal KV cache, while an action DiT generates action chunks conditioned on the cached video representations. The two branches are organized in a mixture-of-transformers (MoT) architecture. During inference, the clean latent of the current observation is forwarded through the video DiT only once to update the KV cache; the action DiT then predicts the action chunk by denoising action tokens while attending to the cached video representations. Video generation is bypassed at inference time.
+          </p>
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Hybrid Memory.</strong> Inspired by complementary forms of human memory, EM-WAM maintains a compact temporal cache comprising three components: (1) <em>short-term memory</em>—a sliding-window cache over the most recent frames, preserving high-fidelity local context for immediate closed-loop control; (2) <em>event-boundary memory</em>—a small set of anchor frames at task onset with full visual tokens, grounding key information in the instruction; and (3) <em>gist memory</em>—<em>M</em> learnable gist tokens per frame (<em>M</em> ≪ <em>L</em>, the number of visual tokens) that compress long-range history, reducing the KV cache by <em>L/M</em>× compared with full-history attention.
+          </p>
+        </div>
+        <figure class="image" style="display: flex; justify-content: center;">
+          <img src="static/images/attn_mask.jpg" alt="Attention Mask" style="width: 50%; height: auto;">
+        </figure>
+        <br>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Attention mask of EM-WAM.</strong> Each frame's gist tokens attend to both the frame's visual tokens and its historical context, thereby distilling long-range information into a compact representation. For a video frame that is neither an anchor frame nor a recent frame, subsequent video and action tokens do not attend to it directly; instead, they attend to the corresponding gist tokens. During inference, EM-WAM evicts the KV cache of such frames while preserving the KV cache of their gist tokens, so that long-range history is retained as a compact persistent memory rather than as a costly full-token KV cache.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="qualitative_comparison">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(93, 144, 191);">Results</h2>
+        <br>
+        <div class="table-container">
+          <table class="table is-bordered is-striped is-hoverable is-fullwidth" style="font-size: 1rem; text-align: center;">
+            <caption style="caption-side: top; font-weight: bold; margin-bottom: 0.5em;">Results on RMBench. We report the success rates over 100 rollouts.</caption>
+            <thead>
+              <tr style="background-color: #f0f0f0;">
+                <th style="text-align: left;">Task</th>
+                <th>π<sub>0.5</sub></th>
+                <th>FastWAM</th>
+                <th>Lingbot-VA</th>
+                <th>EM-WAM (Ours)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: left;">Observe and Pick Up</td>
+                <td>9%</td>
+                <td>0%</td>
+                <td>13%</td>
+                <td><strong>27%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Rearrange Blocks</td>
+                <td>13%</td>
+                <td>0%</td>
+                <td><strong>100%</strong></td>
+                <td><strong>100%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Put Back Block</td>
+                <td>11%</td>
+                <td>0%</td>
+                <td><strong>100%</strong></td>
+                <td><strong>100%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Swap Blocks</td>
+                <td>24%</td>
+                <td>0%</td>
+                <td>99%</td>
+                <td><strong>100%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Swap T</td>
+                <td>15%</td>
+                <td>7%</td>
+                <td>88%</td>
+                <td><strong>94%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Battery Try</td>
+                <td>16%</td>
+                <td>20%</td>
+                <td><strong>41%</strong></td>
+                <td><strong>41%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Blocks Ranking Try</td>
+                <td>6%</td>
+                <td>26%</td>
+                <td><strong>100%</strong></td>
+                <td><strong>100%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Cover Blocks</td>
+                <td>0%</td>
+                <td>0%</td>
+                <td>79%</td>
+                <td><strong>98%</strong></td>
+              </tr>
+              <tr>
+                <td style="text-align: left;">Press Button</td>
+                <td>0%</td>
+                <td>0%</td>
+                <td>84%</td>
+                <td><strong>87%</strong></td>
+              </tr>
+              <tr style="font-style: italic; font-weight: bold;">
+                <td style="text-align: left;"><em><strong>Average</strong></em></td>
+                <td>10.4%</td>
+                <td>5.9%</td>
+                <td>78.2%</td>
+                <td><strong>83.0%</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            We evaluate EM-WAM on <strong>RMBench</strong>, a simulation benchmark for long-horizon, memory-dependent robotic manipulation across nine dual-arm tasks. Baselines with bounded observation windows (<strong>π<sub>0.5</sub></strong>, <strong>FastWAM</strong>) fail on most tasks, achieving only 10.4% and 5.9% average success. <strong>LingBot-VA</strong>, which retains the full historical KV cache, achieves strong performance at 78.2%. <strong style="color: rgb(93, 144, 191);">EM-WAM further improves by 4.8 percentage points to 83.0%</strong>, achieving leading results on every task — demonstrating that the proposed hybrid memory mechanism is both efficient and effective for robotic manipulation.
+          </p>
+        </div>
+
+        <br>
+
+        <figure class="image" style="display: flex; justify-content: center;">
+          <img src="static/images/efficiency.jpg" alt="Efficiency">
+        </figure>
+        <br>
+        <div class="content has-text-justified">
+          <p style="font-size: 1.1rem; line-height: 1.5;">
+            We compare EM-WAM's hybrid memory against full attention, TTT, and RNN-based mechanisms in terms of inference latency, GPU memory usage, and task performance. TTT and RNN maintain constant complexity but introduce overhead even for short trajectories. Full attention scales poorly with trajectory length. <strong style="color: rgb(93, 144, 191);">Hybrid memory achieves the same 87% success rate as full attention on the challenging Press Button task, while being substantially more efficient</strong> — even outperforming RNN- and TTT-based alternatives at 1,600 frames.
+          </p>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small" id="application">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths is-centered">
+        <h2 class="title is-3 has-text-centered is-size-5-mobile title-with-lines" style="color: rgb(93, 144, 191);">Demo</h2>
+        <br>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/real/shell_game_fast_crop_compressed.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"Play the shell game."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/real/look_and_press_two_fast_crop_compressed.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"Look at the two numbers on the table. Press the left button as many times as the number on the left, and press the right button as many times as the number on the right. Then press the rear button once to confirm."</p>
+          </div>
+        </div>
+
+        <br>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/observe_and_pick_up.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"Initially, there is one target object on the shelf and five random objects on the table. Then, a screen obscures the target object. Pick up the corresponding target object from the table and lift it up."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/rearrange_blocks.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"Move the block between the two mats onto the empty mat, press the button, then move the other block (the one that started on a mat) to the space between the two mats."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/put_back_block.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"There are four mats, one block, and a button on the table. One block is on one of the mats. First, put the block to the center, then press the button. Then, put the block back in its original position."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/swap_blocks.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"There are three traies on the table, and two blocks are placed in two different traies. You may move only one block at a time, and each tray can hold at most one block. Swap the positions of the two blocks. Finally press the button."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/swap_T.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"Swap the poses of the two T-blocks, including both position and orientation."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/battery_try.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"There are two batteries and a battery slot on the table. Combining the two batteries in different orientations causes the dashboard needle to rotate."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/blocks_ranking_try.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"There is a button and three colored cubes arranged in a random row on the table. Each time the cubes are rearranged, the arm presses the button until the arrangement is successful."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/cover_blocks.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"On the table, red, green, and blue blocks are arranged randomly along with three lids. From the current viewpoint, cover the blocks from left to right using the lids, and then uncover them again in the sequence red, green, and blue."</p>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 2rem; margin-bottom: 1.5rem;">
+          <div style="flex: 0 0 40%;">
+            <video autoplay muted loop playsinline style="width: 100%; height: auto; display: block;">
+              <source src="./static/videos/sim/press_button.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div style="flex: 1; font-size: 1rem; line-height: 1.6; color: #333;">
+            <p>"Observe the two numbers on the table. Press the left button the number of times corresponding to the number on the left, and press the middle button the number of times corresponding to the number on the right. Then press the right button once to confirm."</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section is-small">
+  <div class="container is-max-widescreen">
+    <h2 class="title is-3 is-size-4-mobile">Our Team</h2>
+    <div class="container has-text-centered">
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
+        <div class="author-block has-text-centered has-addons-centered">Sizhe Yang<sup>1,*</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Juncheng Mu<sup>2,*</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Tianming Wei<sup>2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Chenhao Lu<sup>2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Xiaofan Li<sup>3</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Linning Xu<sup>1</sup></div>
+      </div>
+      <div class="publication-authors is-flex justify-content is-justify-content-space-around is-hidden-mobile">
+        <div class="author-block has-text-centered has-addons-centered">Zhengrong Xue<sup>2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Zhecheng Yuan<sup>2</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Dahua Lin<sup>1</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Jiangmiao Pang<sup>1</sup></div>
+        <div class="author-block has-text-centered has-addons-centered">Huazhe Xu<sup>2</sup></div>
+      </div>
+      <div class="publication-authors" style="margin-top: 0.5rem;">
+        <span class="author-block"><sup>1</sup>The Chinese University of Hong Kong, </span>
+        <span class="author-block"><sup>2</sup>Tsinghua University, </span>
+        <span class="author-block"><sup>3</sup>Zhejiang University</span>
+        <br>
+        <span class="author-block" style="color: gray; display: inline-block; margin-top: 0.3rem;"><sup>*</sup> equal contribution</span>
+        <br>
+      </div>
+    </div>
+    <br>
+    <p>If you have any questions, please contact <a href="https://yangsizhe.github.io/">Sizhe Yang</a>.</p>
+  </div>
+</section>
+
+<section class="section is-small" id="BibTeX">
+  <div class="container is-max-widescreen">
+    <div class="bibtex-header">
+      <h2 class="title">BibTeX</h2>
+      <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+        <i class="fas fa-copy"></i>
+        <span class="copy-text">Copy</span>
+      </button>
+    </div>
+    <pre id="bibtex-code"><code>
+@article{yang2026emwam,
+  title={EM-WAM: Efficient World Action Modeling with Persistent Memory},
+  author={Yang, Sizhe and Mu, Juncheng and Wei, Tianming and Lu, Chenhao and Li, Xiaofan and Xu, Linning and Xue, Zhengrong and Yuan, Zhecheng and Lin, Dahua and Pang, Jiangmiao and Xu, Huazhe},
+  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  year={2026}
+}
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>Website template modified from <a href="https://nerfies.github.io/">NeRFies</a> and <a href="https://github.com/umi-on-legs/umi-on-legs.github.io/">UMI on Legs</a>.</p>
+          <p>This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.148.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.148.0/examples/jsm/"
+    }
+  }
+</script>
+
+<script>
+  function copyBibTeX() {
+      const codeBlock = document.getElementById('bibtex-code');
+      const text = codeBlock.innerText;
+      
+      navigator.clipboard.writeText(text).then(() => {
+          // 复制成功后的简单反馈（可选）
+          const btn = document.querySelector('.copy-bibtex-btn span');
+          const originalText = btn.innerText;
+          btn.innerText = 'Copied!';
+          setTimeout(() => {
+              btn.innerText = originalText;
+          }, 2000);
+      }).catch(err => {
+          console.error('Failed to copy: ', err);
+      });
+  }
+</script>
+
+<script type="module">
+  import * as THREE from 'three';
+  import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
+
+  (function () {
+    /* ============================================================
+     *  CONFIGURATION — change the file paths here
+     * ============================================================ */
+    const plyFiles = [
+      'static/pc/pred_pc_cam_tiny.ply',
+      'static/pc/pred_pc_cam_transp.ply',
+      'static/pc/pred_pc_cam_bidex.ply'
+    ];
+    const containerIds = ['viewer1', 'viewer2', 'viewer3'];
+
+    console.log('[PLY Viewer] THREE r' + THREE.REVISION + ', PLYLoader Imported ✓');
+
+    /* ============================================================
+     *  Per-viewer initialisation
+     * ============================================================ */
+    containerIds.forEach(function (id, idx) {
+      createViewer(id, plyFiles[idx]);
+    });
+
+    function createViewer(containerId, plyPath) {
+      var container = document.getElementById(containerId);
+      if (!container) { console.error('[PLY Viewer] Container #' + containerId + ' not found'); return; }
+
+      /* loading indicator */
+      var loadingEl = document.createElement('div');
+      loadingEl.className = 'ply-loading';
+      loadingEl.textContent = 'Loading point cloud…';
+      container.appendChild(loadingEl);
+
+      /* renderer */
+      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setClearColor(0x1a1a2e);
+      container.appendChild(renderer.domElement);
+
+      /* scene & camera */
+      var scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xffffff); 
+      var camera = new THREE.PerspectiveCamera(45, 2, 0.01, 100);
+      camera.position.set(0, 0, 0);
+
+      /* ---- Simple orbit controls ---- */
+      // 1. 设置初始状态为 -Math.PI
+      var state = { dragging: false, prevX: 0, prevY: 0, rotX: -Math.PI, rotY: 0, zoom: 2.5 };
+      var pivot = new THREE.Group();
+      scene.add(pivot);
+
+      container.addEventListener('pointerdown', function (e) {
+        state.dragging = true;
+        state.prevX = e.clientX;
+        state.prevY = e.clientY;
+        container.setPointerCapture(e.pointerId);
+      });
+      
+      container.addEventListener('pointermove', function (e) {
+        if (!state.dragging) return;
+        var dx = e.clientX - state.prevX;
+        var dy = e.clientY - state.prevY;
+        
+        // 增量更新角度
+        state.rotY += dx * 0.005;
+        state.rotX += dy * 0.005;
+        
+        // 2. 【关键修改】注释掉下面这行限制代码
+        // 因为 -Math.PI (-3.14) 小于 -Math.PI/2 (-1.57)
+        // 只要一动，Math.max 就会强制把角度变成 -1.57，导致画面跳变
+        // state.rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, state.rotX));
+        
+        state.prevX = e.clientX;
+        state.prevY = e.clientY;
+      });
+      
+      container.addEventListener('pointerup', function (e) {
+        state.dragging = false;
+      });
+      container.addEventListener('pointercancel', function (e) {
+        state.dragging = false;
+      });
+      container.addEventListener('wheel', function (e) {
+        e.preventDefault();
+        state.zoom *= e.deltaY > 0 ? 1.1 : 0.9;
+        state.zoom = Math.max(0.3, Math.min(20, state.zoom));
+      }, { passive: false });
+
+      /* touch pinch-to-zoom */
+      var lastPinchDist = 0;
+      container.addEventListener('touchstart', function (e) {
+        if (e.touches.length === 2) {
+          lastPinchDist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+        }
+      }, { passive: true });
+      container.addEventListener('touchmove', function (e) {
+        if (e.touches.length === 2) {
+          var dist = Math.hypot(
+            e.touches[0].clientX - e.touches[1].clientX,
+            e.touches[0].clientY - e.touches[1].clientY
+          );
+          if (lastPinchDist > 0) {
+            state.zoom *= lastPinchDist / dist;
+            state.zoom = Math.max(0.3, Math.min(20, state.zoom));
+          }
+          lastPinchDist = dist;
+        }
+      }, { passive: true });
+
+      /* ---- Load PLY ---- */
+      console.log('[PLY Viewer] Loading: ' + plyPath);
+      
+      var loader = new PLYLoader();
+      
+      loader.load(
+        plyPath,
+        function (geometry) {
+          console.log('[PLY Viewer] Loaded ' + plyPath + ' — vertices: ' + geometry.attributes.position.count);
+
+          geometry.computeBoundingSphere();
+          var center = geometry.boundingSphere.center;
+          var radius = geometry.boundingSphere.radius;
+
+          geometry.translate(-center.x, -center.y, -center.z);
+
+          /* normalise size */
+          var s = 1.0 / (radius || 1);
+          geometry.scale(s, s, s);
+
+          /* Use vertex colours if available */
+          var hasColors = geometry.hasAttribute('color');
+
+          var material = new THREE.PointsMaterial({
+            size: 0.01,
+            vertexColors: hasColors,
+            color: hasColors ? 0xffffff : 0x60d0ab,
+            sizeAttenuation: true
+          });
+
+          // =========================================================
+          // [Method 2: Shader Injection] 强制提亮逻辑
+          // =========================================================
+          const brightnessFactor = 1.8; 
+          material.onBeforeCompile = function(shader) {
+            shader.uniforms.uBrightness = { value: brightnessFactor };
+            shader.fragmentShader = 'uniform float uBrightness;\n' + shader.fragmentShader;
+            shader.fragmentShader = shader.fragmentShader.replace(
+              '#include <color_fragment>',
+              `
+              #include <color_fragment>
+              diffuseColor.rgb *= uBrightness;
+              `
+            );
+          };
+          // =========================================================
+
+          var points = new THREE.Points(geometry, material);
+          pivot.add(points);
+          loadingEl.classList.add('hidden');
+        },
+        function (xhr) {
+          if (xhr.total) {
+            var pct = Math.round((xhr.loaded / xhr.total) * 100);
+            loadingEl.textContent = 'Loading… ' + pct + '%';
+          }
+        },
+        function (err) {
+          console.error('[PLY Viewer] Failed to load ' + plyPath, err);
+          loadingEl.textContent = '❌ Failed to load ' + plyPath;
+          loadingEl.style.color = '#e74c3c';
+        }
+      );
+
+      /* ---- Render loop ---- */
+      function animate() {
+        requestAnimationFrame(animate);
+
+        var w = container.clientWidth;
+        var h = container.clientHeight;
+        if (w === 0 || h === 0) {
+          h = container.offsetHeight;
+        }
+        if (w === 0 || h === 0) return;
+
+        renderer.setSize(w, h, false);
+        camera.aspect = w / h;
+        camera.updateProjectionMatrix();
+
+        pivot.rotation.set(state.rotX, state.rotY, 0);
+        camera.position.set(0, 0, state.zoom);
+
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+  })();
+</script>
+</body>
+</html>
