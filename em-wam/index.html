@@ -129,6 +129,52 @@
         background-color: #1d4ed8; /* 深一点的蓝色 */
     }
 
+    /* ===== Video Progress Bar ===== */
+    .video-wrap {
+      position: relative;
+      line-height: 0;
+    }
+    .video-progress {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: rgba(200, 200, 200, 0.45);
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.2s, height 0.15s;
+      z-index: 10;
+    }
+    .video-wrap:hover .video-progress {
+      opacity: 1;
+      height: 6px;
+    }
+    .video-progress-fill {
+      height: 100%;
+      background: rgb(93, 144, 191);
+      width: 0%;
+      pointer-events: none;
+      position: relative;
+    }
+    .video-progress-fill::after {
+      content: '';
+      position: absolute;
+      right: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #F8F8F6;
+      border: 2px solid rgb(93, 144, 191);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .video-wrap:hover .video-progress-fill::after {
+      opacity: 1;
+    }
+
     /* 代码块样式 */
     pre {
         background-color: #f5f5f5;
@@ -170,7 +216,7 @@
               </span>
               <span>arXiv</span>
             </a>
-            <a class="button is-large" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: white;" href="https://github.com/yangsizhe/em-wam">
+            <a class="button is-large" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: white;" href="https://github.com/yangsizhe/EM-WAM">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/github.svg" alt="Code" />
               </span>
@@ -588,6 +634,98 @@
   </div>
 </footer>
 
+<script>
+(function () {
+  function initVideoProgress(video) {
+    var wrap = document.createElement('div');
+    wrap.className = 'video-wrap';
+    video.parentNode.insertBefore(wrap, video);
+    wrap.appendChild(video);
+
+    var bar = document.createElement('div');
+    bar.className = 'video-progress';
+    var fill = document.createElement('div');
+    fill.className = 'video-progress-fill';
+    bar.appendChild(fill);
+    wrap.appendChild(bar);
+
+    // rAF loop: smooth 60fps fill update during playback
+    var dragging = false;
+    var dragRatio = 0;
+    var latestRatio = null; // newest ratio waiting to be seeked
+
+    (function loop() {
+      if (!dragging && video.duration) {
+        fill.style.width = (video.currentTime / video.duration * 100) + '%';
+      }
+      requestAnimationFrame(loop);
+    })();
+
+    // When a seek finishes, immediately apply the latest ratio (if any)
+    video.addEventListener('seeked', function () {
+      if (dragging && latestRatio !== null && video.duration) {
+        video.currentTime = latestRatio * video.duration;
+        latestRatio = null;
+      }
+    });
+
+    function getRatio(clientX) {
+      var rect = bar.getBoundingClientRect();
+      return Math.max(0, Math.min((clientX - rect.left) / rect.width, 1));
+    }
+
+    function onDragMove(clientX) {
+      dragRatio = getRatio(clientX);
+      // Update fill immediately — no waiting for video
+      fill.style.width = (dragRatio * 100) + '%';
+      if (video.duration) {
+        if (!video.seeking) {
+          // No seek in flight: issue immediately
+          video.currentTime = dragRatio * video.duration;
+          latestRatio = null;
+        } else {
+          // Seek in flight: remember latest position, apply in 'seeked' handler
+          latestRatio = dragRatio;
+        }
+      }
+    }
+
+    bar.addEventListener('mousedown', function (e) {
+      dragging = true;
+      video.pause();
+      onDragMove(e.clientX);
+      e.preventDefault();
+    });
+    document.addEventListener('mousemove', function (e) {
+      if (dragging) onDragMove(e.clientX);
+    });
+    document.addEventListener('mouseup', function () { dragging = false; });
+
+    bar.addEventListener('touchstart', function (e) {
+      dragging = true;
+      video.pause();
+      onDragMove(e.touches[0].clientX);
+      e.preventDefault();
+    }, { passive: false });
+    bar.addEventListener('touchmove', function (e) {
+      onDragMove(e.touches[0].clientX);
+      e.preventDefault();
+    }, { passive: false });
+    bar.addEventListener('touchend', function () { dragging = false; });
+  }
+
+  function init() {
+    document.querySelectorAll('#application video').forEach(initVideoProgress);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
 <script type="importmap">
   {
     "imports": {
@@ -616,206 +754,5 @@
   }
 </script>
 
-<script type="module">
-  import * as THREE from 'three';
-  import { PLYLoader } from 'three/addons/loaders/PLYLoader.js';
-
-  (function () {
-    /* ============================================================
-     *  CONFIGURATION — change the file paths here
-     * ============================================================ */
-    const plyFiles = [
-      'static/pc/pred_pc_cam_tiny.ply',
-      'static/pc/pred_pc_cam_transp.ply',
-      'static/pc/pred_pc_cam_bidex.ply'
-    ];
-    const containerIds = ['viewer1', 'viewer2', 'viewer3'];
-
-    console.log('[PLY Viewer] THREE r' + THREE.REVISION + ', PLYLoader Imported ✓');
-
-    /* ============================================================
-     *  Per-viewer initialisation
-     * ============================================================ */
-    containerIds.forEach(function (id, idx) {
-      createViewer(id, plyFiles[idx]);
-    });
-
-    function createViewer(containerId, plyPath) {
-      var container = document.getElementById(containerId);
-      if (!container) { console.error('[PLY Viewer] Container #' + containerId + ' not found'); return; }
-
-      /* loading indicator */
-      var loadingEl = document.createElement('div');
-      loadingEl.className = 'ply-loading';
-      loadingEl.textContent = 'Loading point cloud…';
-      container.appendChild(loadingEl);
-
-      /* renderer */
-      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-      renderer.setClearColor(0x1a1a2e);
-      container.appendChild(renderer.domElement);
-
-      /* scene & camera */
-      var scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xffffff); 
-      var camera = new THREE.PerspectiveCamera(45, 2, 0.01, 100);
-      camera.position.set(0, 0, 0);
-
-      /* ---- Simple orbit controls ---- */
-      // 1. 设置初始状态为 -Math.PI
-      var state = { dragging: false, prevX: 0, prevY: 0, rotX: -Math.PI, rotY: 0, zoom: 2.5 };
-      var pivot = new THREE.Group();
-      scene.add(pivot);
-
-      container.addEventListener('pointerdown', function (e) {
-        state.dragging = true;
-        state.prevX = e.clientX;
-        state.prevY = e.clientY;
-        container.setPointerCapture(e.pointerId);
-      });
-      
-      container.addEventListener('pointermove', function (e) {
-        if (!state.dragging) return;
-        var dx = e.clientX - state.prevX;
-        var dy = e.clientY - state.prevY;
-        
-        // 增量更新角度
-        state.rotY += dx * 0.005;
-        state.rotX += dy * 0.005;
-        
-        // 2. 【关键修改】注释掉下面这行限制代码
-        // 因为 -Math.PI (-3.14) 小于 -Math.PI/2 (-1.57)
-        // 只要一动，Math.max 就会强制把角度变成 -1.57，导致画面跳变
-        // state.rotX = Math.max(-Math.PI / 2, Math.min(Math.PI / 2, state.rotX));
-        
-        state.prevX = e.clientX;
-        state.prevY = e.clientY;
-      });
-      
-      container.addEventListener('pointerup', function (e) {
-        state.dragging = false;
-      });
-      container.addEventListener('pointercancel', function (e) {
-        state.dragging = false;
-      });
-      container.addEventListener('wheel', function (e) {
-        e.preventDefault();
-        state.zoom *= e.deltaY > 0 ? 1.1 : 0.9;
-        state.zoom = Math.max(0.3, Math.min(20, state.zoom));
-      }, { passive: false });
-
-      /* touch pinch-to-zoom */
-      var lastPinchDist = 0;
-      container.addEventListener('touchstart', function (e) {
-        if (e.touches.length === 2) {
-          lastPinchDist = Math.hypot(
-            e.touches[0].clientX - e.touches[1].clientX,
-            e.touches[0].clientY - e.touches[1].clientY
-          );
-        }
-      }, { passive: true });
-      container.addEventListener('touchmove', function (e) {
-        if (e.touches.length === 2) {
-          var dist = Math.hypot(
-            e.touches[0].clientX - e.touches[1].clientX,
-            e.touches[0].clientY - e.touches[1].clientY
-          );
-          if (lastPinchDist > 0) {
-            state.zoom *= lastPinchDist / dist;
-            state.zoom = Math.max(0.3, Math.min(20, state.zoom));
-          }
-          lastPinchDist = dist;
-        }
-      }, { passive: true });
-
-      /* ---- Load PLY ---- */
-      console.log('[PLY Viewer] Loading: ' + plyPath);
-      
-      var loader = new PLYLoader();
-      
-      loader.load(
-        plyPath,
-        function (geometry) {
-          console.log('[PLY Viewer] Loaded ' + plyPath + ' — vertices: ' + geometry.attributes.position.count);
-
-          geometry.computeBoundingSphere();
-          var center = geometry.boundingSphere.center;
-          var radius = geometry.boundingSphere.radius;
-
-          geometry.translate(-center.x, -center.y, -center.z);
-
-          /* normalise size */
-          var s = 1.0 / (radius || 1);
-          geometry.scale(s, s, s);
-
-          /* Use vertex colours if available */
-          var hasColors = geometry.hasAttribute('color');
-
-          var material = new THREE.PointsMaterial({
-            size: 0.01,
-            vertexColors: hasColors,
-            color: hasColors ? 0xffffff : 0x60d0ab,
-            sizeAttenuation: true
-          });
-
-          // =========================================================
-          // [Method 2: Shader Injection] 强制提亮逻辑
-          // =========================================================
-          const brightnessFactor = 1.8; 
-          material.onBeforeCompile = function(shader) {
-            shader.uniforms.uBrightness = { value: brightnessFactor };
-            shader.fragmentShader = 'uniform float uBrightness;\n' + shader.fragmentShader;
-            shader.fragmentShader = shader.fragmentShader.replace(
-              '#include <color_fragment>',
-              `
-              #include <color_fragment>
-              diffuseColor.rgb *= uBrightness;
-              `
-            );
-          };
-          // =========================================================
-
-          var points = new THREE.Points(geometry, material);
-          pivot.add(points);
-          loadingEl.classList.add('hidden');
-        },
-        function (xhr) {
-          if (xhr.total) {
-            var pct = Math.round((xhr.loaded / xhr.total) * 100);
-            loadingEl.textContent = 'Loading… ' + pct + '%';
-          }
-        },
-        function (err) {
-          console.error('[PLY Viewer] Failed to load ' + plyPath, err);
-          loadingEl.textContent = '❌ Failed to load ' + plyPath;
-          loadingEl.style.color = '#e74c3c';
-        }
-      );
-
-      /* ---- Render loop ---- */
-      function animate() {
-        requestAnimationFrame(animate);
-
-        var w = container.clientWidth;
-        var h = container.clientHeight;
-        if (w === 0 || h === 0) {
-          h = container.offsetHeight;
-        }
-        if (w === 0 || h === 0) return;
-
-        renderer.setSize(w, h, false);
-        camera.aspect = w / h;
-        camera.updateProjectionMatrix();
-
-        pivot.rotation.set(state.rotX, state.rotY, 0);
-        camera.position.set(0, 0, state.zoom);
-
-        renderer.render(scene, camera);
-      }
-      animate();
-    }
-  })();
-</script>
 </body>
 </html>
