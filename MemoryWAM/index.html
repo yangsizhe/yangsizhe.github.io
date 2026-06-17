@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="EM-WAM">
+  <meta name="description" content="MemoryWAM">
   <meta name="keywords" content="Robot Learning, Manipulation">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>EM-WAM</title>
+  <title>MemoryWAM</title>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-QZ38WT2YPD"></script>
@@ -216,7 +216,7 @@
               </span>
               <span>arXiv</span>
             </a>
-            <a class="button is-large" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: white;" href="https://github.com/yangsizhe/EM-WAM">
+            <a class="button is-large" style="background: rgba(255,255,255,0.15); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3); color: white;" href="https://github.com/yangsizhe/MemoryWAM">
               <span class="icon" style="margin-right:5px;">
                 <img src="./static/images/github.svg" alt="Code" />
               </span>
@@ -232,7 +232,7 @@
     <div class="container has-text-centered">
       <br><br><br><br><br><br><br>
       <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 4rem; line-height: 1.1;">
-        <em><strong style="color: rgb(93, 144, 191);">EM-WAM</strong>:</em>
+        <em><strong style="color: rgb(93, 144, 191);">MemoryWAM</strong>:</em>
       </h1>
       <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3rem; line-height: 1.2 !important; max-height: none !important;">
         Efficient World Action Modeling with <br>
@@ -269,11 +269,11 @@
     <div class="columns is-centered">
       <div class="column is-four-fifths has-text-justified is-hidden-mobile">
         <h2 class="subtitle" style="line-height: 1.5;">
-          <strong style="color: rgb(93, 144, 191); font-size: 1.5em;">EM-WAM</strong> is a world action model with <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">efficient persistent memory</strong> for robotic manipulation.
+          <strong style="color: rgb(93, 144, 191); font-size: 1.5em;">MemoryWAM</strong> is a world action model with <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">efficient persistent memory</strong> for robotic manipulation.
           <br><br>
           Its hybrid memory design combines recent frames, event-boundary anchors, and compact gist tokens, <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">reducing inference complexity from O(N) to O(N/d) while preserving long-range context</strong>.
           <br><br>
-          EM-WAM <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">outperforms strong VLA and WAM baselines</strong> on long-horizon, memory-dependent tasks in both simulation and the real world.
+          MemoryWAM <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">outperforms strong VLA and WAM baselines</strong> on long-horizon, memory-dependent tasks in both simulation and the real world.
         </h2>
       </div>
     </div>
@@ -296,7 +296,7 @@
             <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Model Architecture.</strong> Observations are first encoded into compact video latents by a causal video VAE. A video DiT processes visual dynamics and maintains a temporal KV cache, while an action DiT generates action chunks conditioned on the cached video representations. The two branches are organized in a mixture-of-transformers (MoT) architecture. During inference, the clean latent of the current observation is forwarded through the video DiT only once to update the KV cache; the action DiT then predicts the action chunk by denoising action tokens while attending to the cached video representations. Video generation is bypassed at inference time.
           </p>
           <p style="font-size: 1.1rem; line-height: 1.5;">
-            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Hybrid Memory.</strong> Inspired by complementary forms of human memory, EM-WAM maintains a compact temporal cache comprising three components: (1) <em>short-term memory</em>—a sliding-window cache over the most recent frames, preserving high-fidelity local context for immediate closed-loop control; (2) <em>event-boundary memory</em>—a small set of anchor frames at task onset with full visual tokens, grounding key information in the instruction; and (3) <em>gist memory</em>—<em>M</em> learnable gist tokens per frame (<em>M</em> ≪ <em>L</em>, the number of visual tokens) that compress long-range history, reducing the KV cache by <em>L/M</em>× compared with full-history attention.
+            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Hybrid Memory.</strong> Inspired by complementary forms of human memory, MemoryWAM maintains a compact temporal cache comprising three components: (1) <em>short-term memory</em>—a sliding-window cache over the most recent frames, preserving high-fidelity local context for immediate closed-loop control; (2) <em>event-boundary memory</em>—a small set of anchor frames at task onset with full visual tokens, grounding key information in the instruction; and (3) <em>gist memory</em>—<em>M</em> learnable gist tokens per frame (<em>M</em> ≪ <em>L</em>, the number of visual tokens) that compress long-range history, reducing the KV cache by <em>L/M</em>× compared with full-history attention.
           </p>
         </div>
         <figure class="image" style="display: flex; justify-content: center;">
@@ -305,7 +305,7 @@
         <br>
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem; line-height: 1.5;">
-            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Attention mask of EM-WAM.</strong> Each frame's gist tokens attend to both the frame's visual tokens and its historical context, thereby distilling long-range information into a compact representation. For a video frame that is neither an anchor frame nor a recent frame, subsequent video and action tokens do not attend to it directly; instead, they attend to the corresponding gist tokens. During inference, EM-WAM evicts the KV cache of such frames while preserving the KV cache of their gist tokens, so that long-range history is retained as a compact persistent memory rather than as a costly full-token KV cache.
+            <strong style="color: rgb(93, 144, 191); font-size: 1.05em;">Attention mask of MemoryWAM.</strong> Each frame's gist tokens attend to both the frame's visual tokens and its historical context, thereby distilling long-range information into a compact representation. For a video frame that is neither an anchor frame nor a recent frame, subsequent video and action tokens do not attend to it directly; instead, they attend to the corresponding gist tokens. During inference, MemoryWAM evicts the KV cache of such frames while preserving the KV cache of their gist tokens, so that long-range history is retained as a compact persistent memory rather than as a costly full-token KV cache.
           </p>
         </div>
       </div>
@@ -329,7 +329,7 @@
                 <th>π<sub>0.5</sub></th>
                 <th>FastWAM</th>
                 <th>Lingbot-VA</th>
-                <th>EM-WAM (Ours)</th>
+                <th>MemoryWAM (Ours)</th>
               </tr>
             </thead>
             <tbody>
@@ -408,7 +408,7 @@
         </div>
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem; line-height: 1.5;">
-            We evaluate EM-WAM on <strong>RMBench</strong>, a simulation benchmark for long-horizon, memory-dependent robotic manipulation across nine dual-arm tasks. Baselines with bounded observation windows (<strong>π<sub>0.5</sub></strong>, <strong>FastWAM</strong>) fail on most tasks, achieving only 10.4% and 5.9% average success. <strong>LingBot-VA</strong>, which retains the full historical KV cache, achieves strong performance at 78.2%. <strong style="color: rgb(93, 144, 191);">EM-WAM further improves by 4.8 percentage points to 83.0%</strong>, achieving leading results on every task — demonstrating that the proposed hybrid memory mechanism is both efficient and effective for robotic manipulation.
+            We evaluate MemoryWAM on <strong>RMBench</strong>, a simulation benchmark for long-horizon, memory-dependent robotic manipulation across nine dual-arm tasks. Baselines with bounded observation windows (<strong>π<sub>0.5</sub></strong>, <strong>FastWAM</strong>) fail on most tasks, achieving only 10.4% and 5.9% average success. <strong>LingBot-VA</strong>, which retains the full historical KV cache, achieves strong performance at 78.2%. <strong style="color: rgb(93, 144, 191);">MemoryWAM further improves by 4.8 percentage points to 83.0%</strong>, achieving leading results on every task — demonstrating that the proposed hybrid memory mechanism is both efficient and effective for robotic manipulation.
           </p>
         </div>
 
@@ -420,7 +420,7 @@
         <br>
         <div class="content has-text-justified">
           <p style="font-size: 1.1rem; line-height: 1.5;">
-            We compare EM-WAM's hybrid memory against full attention, TTT, and RNN-based mechanisms in terms of inference latency, GPU memory usage, and task performance. TTT and RNN maintain constant complexity but introduce overhead even for short trajectories. Full attention scales poorly with trajectory length. <strong style="color: rgb(93, 144, 191);">Hybrid memory achieves the same 87% success rate as full attention on the challenging Press Button task, while being substantially more efficient</strong> — even outperforming RNN- and TTT-based alternatives at 1,600 frames.
+            We compare MemoryWAM's hybrid memory against full attention, TTT, and RNN-based mechanisms in terms of inference latency, GPU memory usage, and task performance. TTT and RNN maintain constant complexity but introduce overhead even for short trajectories. Full attention scales poorly with trajectory length. <strong style="color: rgb(93, 144, 191);">Hybrid memory achieves the same 87% success rate as full attention on the challenging Press Button task, while being substantially more efficient</strong> — even outperforming RNN- and TTT-based alternatives at 1,600 frames.
           </p>
         </div>
 
@@ -611,8 +611,8 @@
       </button>
     </div>
     <pre id="bibtex-code"><code>
-@article{yang2026emwam,
-  title={EM-WAM: Efficient World Action Modeling with Persistent Memory},
+@article{yang2026memorywam,
+  title={MemoryWAM: Efficient World Action Modeling with Persistent Memory},
   author={Yang, Sizhe and Mu, Juncheng and Wei, Tianming and Lu, Chenhao and Li, Xiaofan and Xu, Linning and Xue, Zhengrong and Yuan, Zhecheng and Lin, Dahua and Pang, Jiangmiao and Xu, Huazhe},
   journal={arXiv preprint arXiv:XXXX.XXXXX},
   year={2026}
